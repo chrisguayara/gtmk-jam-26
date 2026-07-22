@@ -4,3 +4,111 @@
 
 [node name="shop" type="Node2D" unique_id=1839950798]
 script = ExtResource("1_lx5au")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=848768115]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1614996961]
+anchors_preset = -1
+anchor_left = 0.89500004
+anchor_top = 0.93000007
+anchor_right = 0.89500004
+anchor_bottom = 0.93000007
+offset_left = -58.80005
+offset_top = -18.400024
+offset_right = 59.19995
+offset_bottom = 18.599976
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+text = "DONE"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer" unique_id=641679467]
+anchors_preset = -1
+anchor_left = 0.582
+anchor_top = 0.423
+anchor_right = 0.582
+anchor_bottom = 0.423
+offset_left = -201.48001
+offset_top = -114.04001
+offset_right = 201.51999
+offset_bottom = 113.95999
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/GridContainer" unique_id=1824182482]
+layout_mode = 2
+text = "Energy Stick"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/GridContainer" unique_id=1239153878]
+layout_mode = 2
+text = "New CD"
+
+[node name="Button4" type="Button" parent="CanvasLayer/GridContainer" unique_id=685577962]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Button3" type="Button" parent="CanvasLayer/GridContainer" unique_id=1198825539]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Button5" type="Button" parent="CanvasLayer/GridContainer" unique_id=917560473]
+layout_mode = 2
+text = "Condiments"
+
+[node name="Button6" type="Button" parent="CanvasLayer/GridContainer" unique_id=1069006154]
+layout_mode = 2
+text = "Fryer"
+
+[node name="Button7" type="Button" parent="CanvasLayer/GridContainer" unique_id=1310360587]
+layout_mode = 2
+text = "Butcher"
+
+[node name="Button8" type="Button" parent="CanvasLayer/GridContainer" unique_id=1620928978]
+layout_mode = 2
+text = "Cleaver"
+
+[node name="Button9" type="Button" parent="CanvasLayer/GridContainer" unique_id=376007734]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Button10" type="Button" parent="CanvasLayer/GridContainer" unique_id=1200184478]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Button11" type="Button" parent="CanvasLayer/GridContainer" unique_id=916723277]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Button12" type="Button" parent="CanvasLayer/GridContainer" unique_id=736328275]
+layout_mode = 2
+text = "ITEM"
+
+[node name="Gridlabel" type="Label" parent="." unique_id=1204752036]
+offset_left = 104.0
+offset_top = 277.0
+offset_right = 143.0
+offset_bottom = 300.0
+text = "Food"
+
+[node name="Gridlabel2" type="Label" parent="." unique_id=1625980731]
+offset_left = 56.0
+offset_top = 186.0
+offset_right = 141.0
+offset_bottom = 209.0
+text = "Equipment"
+
+[node name="Gridlabel3" type="Label" parent="." unique_id=1402635957]
+offset_left = 76.0
+offset_top = 92.0
+offset_right = 136.0
+offset_bottom = 115.0
+text = "Charms"
+
+[node name="wallet" type="Label" parent="." unique_id=1756053398]
+offset_left = 33.0
+offset_top = 417.0
+offset_right = 73.0
+offset_bottom = 440.0
+text = "WALLET: "

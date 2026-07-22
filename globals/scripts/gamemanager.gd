@@ -3,7 +3,7 @@ class_name Game_Manager
 
 var round: int = 0 
 var time_limit: float = 40.0
-var total_money: float = 0.0
+var total_money: float = 1.0
 var round_tips: float = 0.0
 
 var customers_per_round = 3
