@@ -1,9 +1,17 @@
 extends Node
 class_name Game_Manager
 
-# Called when the node enters the scene tree for the first time.
+var round: int = 0 
+var time_limit: float = 40.0
+var total_money: float = 0.0
+var round_tips: float = 0.0
+
+var customers_per_round = 3
+enum game_state {KITCHEN, SHOP}
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
