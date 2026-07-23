@@ -2,9 +2,28 @@
 
 [ext_resource type="Script" uid="uid://bykesb5ujtde1" path="res://globals/main.gd" id="1_a7bik"]
 [ext_resource type="Script" uid="uid://dorqexkkd0lqc" path="res://globals/scripts/state_machine.gd" id="2_w0p5f"]
+[ext_resource type="Script" uid="uid://dnh4ul04xtf8c" path="res://globals/hud.gd" id="3_snysl"]
 
-[node name="main" type="Node2D" unique_id=1081999014]
+[node name="main" type="Node2D" unique_id=1081999014 node_paths=PackedStringArray("hud", "game_state_machine", "content_container")]
 script = ExtResource("1_a7bik")
+hud = NodePath("HUD")
+game_state_machine = NodePath("StateMachine")
+content_container = NodePath("SceneContainer")
 
 [node name="StateMachine" type="Node" parent="." unique_id=512660194]
 script = ExtResource("2_w0p5f")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1993561470 node_paths=PackedStringArray("wallet_label", "context_label")]
+script = ExtResource("3_snysl")
+wallet_label = NodePath("WalletLabel")
+context_label = NodePath("ContextLabel")
+
+[node name="WalletLabel" type="Label" parent="HUD" unique_id=944058098]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ContextLabel" type="Label" parent="HUD" unique_id=1857164221]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SceneContainer" type="Node2D" parent="." unique_id=486427060]

@@ -1,11 +1,21 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var inventory: Dictionary = {} 
 
+func reset_for_new_run() -> void:
+	inventory.clear()
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_count(item_id: StringName) -> int:
+	return inventory.get(item_id, 0)
+
+func add_item(item_id: StringName, amount: int = 1) -> void:
+	inventory[item_id] = get_count(item_id) + amount
+
+func consume_item(item_id: StringName, amount: int = 1) -> bool:
+	var current := get_count(item_id)
+	if current < amount:
+		return false
+	inventory[item_id] = current - amount
+	return true

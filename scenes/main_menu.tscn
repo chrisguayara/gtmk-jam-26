@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c815tsabmswg8"]
+
+[ext_resource type="Script" uid="uid://csf2llwxfssxi" path="res://globals/scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node2D" unique_id=1475613891 node_paths=PackedStringArray("hunt_button", "butcher_button", "shop_button")]
+script = ExtResource("1_l6cm7")
+hunt_button = NodePath("VBoxContainer/Hunt")
+butcher_button = NodePath("VBoxContainer/Butcher")
+shop_button = NodePath("VBoxContainer/Shop")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1621201516]
+offset_left = 339.0
+offset_top = 326.0
+offset_right = 939.0
+offset_bottom = 826.0
+
+[node name="Shop" type="Button" parent="VBoxContainer" unique_id=1622734609]
+layout_mode = 2
+text = "Shop"
+
+[node name="Hunt" type="Button" parent="VBoxContainer" unique_id=51238230]
+layout_mode = 2
+text = "Hunt"
+
+[node name="Butcher" type="Button" parent="VBoxContainer" unique_id=1624719426]
+layout_mode = 2
+text = "Butcher"
