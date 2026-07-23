@@ -1,6 +1,67 @@
 [gd_scene format=3 uid="uid://dp50qetmucco5"]
 
 [ext_resource type="Script" uid="uid://chc6ixt0dmkja" path="res://scripts/shopping_center.gd" id="1_ix0d0"]
+[ext_resource type="Texture2D" uid="uid://def77hwo385lk" path="res://assets/backgrounds/marketplace0.png" id="2_0r63a"]
+[ext_resource type="Texture2D" uid="uid://b50pwlrtu8nku" path="res://assets/backgrounds/shop/lurestraps_trim.png" id="3_60n6q"]
+[ext_resource type="Texture2D" uid="uid://bevqj5pb7nasi" path="res://assets/backgrounds/shop/butcher_trim.png" id="3_g4rni"]
+[ext_resource type="Texture2D" uid="uid://gbblrtiqyghk" path="res://assets/backgrounds/shop/weapons_trim.png" id="4_kjqc2"]
+[ext_resource type="Texture2D" uid="uid://dbbi703a8d78h" path="res://assets/backgrounds/shop/hunt_start.png" id="5_kjqc2"]
 
 [node name="shopping_center" type="Node2D" unique_id=1523955201]
 script = ExtResource("1_ix0d0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1407917830]
+offset_left = -26.0
+offset_top = -21.0
+offset_right = 1304.0
+offset_bottom = 749.0
+texture = ExtResource("2_0r63a")
+
+[node name="luretrap_detection" type="Area2D" parent="." unique_id=37141841]
+position = Vector2(272, 432)
+
+[node name="luretrap" type="CollisionPolygon2D" parent="luretrap_detection" unique_id=1631390489]
+polygon = PackedVector2Array(48, -77.9, 23.899994, -79, -22.800003, -79, -48.4, -69, -51.7, -69, -59.7, -63, -61.8, -63, -86.8, -38, -88.2, -38, -104.1, -10, -105.4, -10, -108, -2.9000015, -108, 38.800003, -89, 57.800003, -89, 59.300003, -60, 73.2, -60, 74.7, -37.199997, 79, 31.399994, 79, 54.399994, 70, 56.600006, 70, 82.5, 52, 84.899994, 52, 95.899994, 40, 97.2, 40, 108, 18.400002, 108, -29, 100, -47.4, 100, -49.9, 88, -61, 88, -62.4, 48, -76.5)
+
+[node name="butcher_detection" type="Area2D" parent="." unique_id=649991539]
+position = Vector2(985, 527)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="butcher_detection" unique_id=243430794]
+polygon = PackedVector2Array(-61, -77.5, -74, -77.5, -96.7, -59.5, -98.2, -59.5, -99.3, -57.3, -93.2, -49, -102, -36.5, -103.6, -36.5, -106, -25.7, -106, 32.9, -104, 37.9, -104, 40.5, -99, 44.4, -99, 46.300003, -79, 66.3, -79, 67.7, -69, 72.7, -69, 74, -55.9, 77.5, 7.4000015, 77.5, 18.099998, 74.5, 22.399994, 74.5, 48.300003, 63.5, 51.699997, 63.5, 64.7, 53.5, 66.899994, 53.5, 86.8, 32.5, 88.3, 32.5, 106, -8.800003, 106, -34, 104, -39, 104, -47.1, 101, -52.1, 101, -54.7, 95, -57.8, 95, -58.9, 90.3, -60.5, 75.7, -60.5, 65.7, -57.5, 62.600006, -57.5, 32.100006, -77.5, 23.199997, -77.5, -4.4000015, -71.5, -7.5999985, -71.5, -26.400002, -58.4, -27, -63.7, -27, -67.7, -34, -71.7, -34, -74.2, -64.2, -65.5, -67.5, -65.5, -62.1, -71.5, -59.2, -71.5, -61, -76.9)
+
+[node name="weapon_detection" type="Area2D" parent="." unique_id=66607480]
+position = Vector2(700, 315)
+
+[node name="weapons_shop" type="CollisionPolygon2D" parent="weapon_detection" unique_id=433469260]
+polygon = PackedVector2Array(-66, -112, -87, -112, -91, -107.8, -91, -104.7, -87.4, -94, -86.8, -94, -83.8, -69, -83.1, -69, -84, -38, -84, -21.800003, -74.5, 16.399994, -95.9, -15, -96.5, -15, -107, -50.3, -107, -53, -112, -57, -112, -59.8, -117.3, -58, -120.1, -58, -123.1, -53, -124, -53, -124, 33.800003, -118, 47.300003, -118, 49.600006, -104, 70.600006, -104, 72.899994, -69, 104.8, -69, 106.399994, -56, 111.399994, -56, 112, 30.699997, 112, 38.100006, 110, 41.5, 110, 54.5, 103, 57.600006, 103, 66.600006, 97, 68.8, 97, 100.8, 66, 102.2, 66, 119.100006, 36, 120.600006, 36, 124, 22, 124, -15.800003, 115.3, -34, 114.5, -34, 105, -66.3, 105, -81, 100, -85, 100, -88.4, 90.5, -83, 88.7, -83, 82, -67.4, 82, -65.9, 73.7, -55.8, 76.5, -66, 78, -66, 78, -91.8, 73, -96.8, 73, -99, 60.5, -99, 55, -102.2, 55, -103.7, 42.199997, -106, 20.699997, -106, -11.300003, -96, -13.800003, -96, -25.800003, -84, -27.400002, -84, -31.300003, -74.3, -45, -91.7, -45, -94, -66, -111.1)
+
+[node name="hunt_detection" type="Area2D" parent="." unique_id=45968136]
+position = Vector2(170, 627)
+
+[node name="hunt_sign" type="CollisionPolygon2D" parent="hunt_detection" unique_id=1776941951]
+polygon = PackedVector2Array(60, -99.6, 60, -92.7, 43.800003, -78.4, -13, -75.2, -13, -74.5, -21.199997, -74.5, -27, -84, -27, -88, -40.699997, -89.5, -46, -89.5, -115.9, -23.5, -118, -23.5, -120.8, -18.300003, -108, 1.9000015, -108, 4.5, -38, 41.399994, -38, 45.399994, -14.800003, 41.5, -9.099998, 41.5, 0, 74.899994, 0, 79.600006, 11.899994, 91.5, 22.199997, 91.5, 34, 78.399994, 34, 68.7, 9, -8.5, 9, -14.199997, -26.699997, -9.5, -31.800003, -9.5, -40.4, 4.699997, -81.9, -16.900002, -45.6, -48.3, -39, -42.300003, -39, -38, 56.800003, -47.3, 62.199997, -13.300003, 42.300003, -15.5, 30.800003, -15.5, 22.800003, -6.5, 17.399994, -6.5, 41, 79, 41, 84.899994, 55, 90.5, 61.600006, 90.5, 69, 80.100006, 69, 74.899994, 54.399994, 17.5, 64, 17.5, 63, 19.099998, 63, 25.399994, 71, 34.300003, 71, 37.100006, 84.2, 41.5, 94.3, 41.5, 100.3, 34.5, 102.3, 34.5, 104.899994, 28.5, 87.7, 10.199997, 91.2, 6.5, 95.5, 6.5, 92, -29, 92, -36.199997, 78, -85.2, 78, -90.6)
+
+[node name="luretrap_shop" type="Sprite2D" parent="." unique_id=1915572381]
+position = Vector2(272, 432)
+texture = ExtResource("3_60n6q")
+
+[node name="weapon_shop" type="Sprite2D" parent="." unique_id=923252626]
+position = Vector2(700, 315)
+texture = ExtResource("4_kjqc2")
+
+[node name="hunt_sign" type="Sprite2D" parent="." unique_id=759250520]
+position = Vector2(170, 627)
+texture = ExtResource("5_kjqc2")
+
+[node name="butcher_shop" type="Sprite2D" parent="." unique_id=1875142779]
+position = Vector2(985, 527)
+texture = ExtResource("3_g4rni")
+
+[connection signal="mouse_entered" from="luretrap_detection" to="." method="_on_luretrap_mouse_entered"]
+[connection signal="mouse_exited" from="luretrap_detection" to="." method="_on_luretrap_mouse_exited"]
+[connection signal="mouse_entered" from="butcher_detection" to="." method="_on_butcher_mouse_entered"]
+[connection signal="mouse_exited" from="butcher_detection" to="." method="_on_butcher_mouse_exited"]
+[connection signal="mouse_entered" from="weapon_detection" to="." method="_on_weapon_mouse_entered"]
+[connection signal="mouse_exited" from="weapon_detection" to="." method="_on_weapon_mouse_exited"]
+[connection signal="mouse_entered" from="hunt_detection" to="." method="_on_hunt_mouse_entered"]
+[connection signal="mouse_exited" from="hunt_detection" to="." method="_on_hunt_mouse_exited"]

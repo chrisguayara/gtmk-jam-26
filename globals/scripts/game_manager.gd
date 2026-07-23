@@ -20,7 +20,6 @@ var hud: Node:
 		return hud
 
 func request_state(state_name: StringName, args = null) -> void:
-	print(state_name + " requested")
 	if main:
-		print("Main was touched and changed to " + state_name)
+		print("changed to " + state_name)
 		main.game_state_machine.change_states(state_name, args)
