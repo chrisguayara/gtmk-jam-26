@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://daj705i7g3jex"]
 
 [ext_resource type="Script" uid="uid://bykesb5ujtde1" path="res://globals/main.gd" id="1_a7bik"]
+[ext_resource type="Script" uid="uid://dorqexkkd0lqc" path="res://globals/scripts/state_machine.gd" id="2_w0p5f"]
 
 [node name="main" type="Node2D" unique_id=1081999014]
 script = ExtResource("1_a7bik")
+
+[node name="Node" type="Node" parent="." unique_id=512660194]
+script = ExtResource("2_w0p5f")

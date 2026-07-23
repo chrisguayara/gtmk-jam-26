@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cupgmb6388vjs"]
 
 [ext_resource type="Script" uid="uid://c3an43acqv2na" path="res://globals/scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://barwjmhxd2exj" path="res://assets/fun_box.png" id="2_xfvoa"]
 
 [node name="shop" type="Node2D" unique_id=1839950798]
 script = ExtResource("1_lx5au")
@@ -37,8 +38,13 @@ theme_override_constants/v_separation = 64
 columns = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/GridContainer" unique_id=1824182482]
+texture_filter = 1
 layout_mode = 2
-text = "Energy Stick"
+text = "
+
+
+Energy Stick"
+icon = ExtResource("2_xfvoa")
 icon_alignment = 1
 
 [node name="Button2" type="Button" parent="CanvasLayer/GridContainer" unique_id=1239153878]

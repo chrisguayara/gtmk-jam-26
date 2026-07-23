@@ -1,19 +1,24 @@
 extends Node
-class_name Game_Manager
-
-var round: int = 0 
-var time_limit: float = 40.0
-var total_money: float = 1.0
-var round_tips: float = 0.0
-
-var customers_per_round = 3
-enum game_state {KITCHEN, SHOP}
 
 
-func _ready() -> void:
-	pass
+var main: Main:
+	get:
+		if main == null and get_tree().current_scene is Main:
+			main = get_tree().current_scene
+		return main
 
+var player: Node:
+	get:
+		if player == null and main:
+			player = main.get_node_or_null("Player")
+		return player
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var hud: Node:
+	get:
+		if hud == null and main:
+			hud = main.hud
+		return hud
+
+func request_state(state_name: StringName, args = null) -> void:
+	if main:
+		main.game_state_machine.change_states(state_name, args)

@@ -19,11 +19,13 @@ config/icon="res://icon.svg"
 Gamemanager="*uid://daii7xy0ru5bf"
 Signals="*uid://xjdvclq1fdub"
 RunManager="*uid://dtf6mhfery2gk"
+EquipmentManager="*uid://5k2sr2noj7gg"
+ShopCatalog="*uid://ba8ugbu5j1kol"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

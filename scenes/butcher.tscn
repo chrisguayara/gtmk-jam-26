@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://xjo2v0tn4giv"]
+
+[ext_resource type="Script" uid="uid://dodnbxxv3yl1f" path="res://scripts/butcher.gd" id="1_2xxjk"]
+
+[node name="butcher" type="Node2D" unique_id=1063997430]
+script = ExtResource("1_2xxjk")
