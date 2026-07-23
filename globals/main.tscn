@@ -6,5 +6,5 @@
 [node name="main" type="Node2D" unique_id=1081999014]
 script = ExtResource("1_a7bik")
 
-[node name="Node" type="Node" parent="." unique_id=512660194]
+[node name="StateMachine" type="Node" parent="." unique_id=512660194]
 script = ExtResource("2_w0p5f")

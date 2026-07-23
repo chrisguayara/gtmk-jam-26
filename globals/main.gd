@@ -1,7 +1,6 @@
 extends Node2D
 class_name Main
 
-
 const MAIN_MENU: StringName = &"MainMenu"
 const HUNTING: StringName = &"Hunting"
 const BUTCHERING: StringName = &"Butchering"
@@ -9,7 +8,7 @@ const SHOPPING_CENTER: StringName = &"ShoppingCenter"
 const IN_SHOP: StringName = &"InShop"
 
 @export var hud: Node
-@export var game_state_machine: StateMachine
+@export var game_state_machine: StateMachine 
 
 func _ready() -> void:
 	game_state_machine.register_state(MAIN_MENU, _enter_main_menu)
