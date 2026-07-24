@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bmf2k3amuwms1"]
+
+[ext_resource type="Texture2D" uid="uid://dy2cac2rnxv17" path="res://assets/placeholders/throw-Sheet.png" id="1_660ry"]
+[ext_resource type="Script" uid="uid://be3xftjatebhx" path="res://scripts/hunter.gd" id="1_amnbx"]
+[ext_resource type="Texture2D" uid="uid://cn5privf0midj" path="res://assets/placeholders/arm.png" id="2_kr1wx"]
+
+[node name="Hunter" type="Node2D" unique_id=1464014446]
+position = Vector2(145, 210)
+script = ExtResource("1_amnbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1732390465]
+z_index = 1
+texture = ExtResource("1_660ry")
+hframes = 2
+
+[node name="arm" type="Node2D" parent="." unique_id=421597622]
+position = Vector2(38, -58)
+
+[node name="Sprite2D" type="Sprite2D" parent="arm" unique_id=542576902]
+position = Vector2(15, 6)
+rotation = 0.8150688
+texture = ExtResource("2_kr1wx")

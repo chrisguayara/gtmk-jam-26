@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bmxr3ns7j0d6s"]
+
+[ext_resource type="Texture2D" uid="uid://dco1alkrgyqga" path="res://assets/placeholders/mammoth.png" id="1_ckswp"]
+
+[node name="Mammoth" type="Node2D" unique_id=1464306291]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276928252]
+texture = ExtResource("1_ckswp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1838556063]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=2122437538]
+polygon = PackedVector2Array(-11, -109, 16, -146, 61, -155, 98, -135, 104, -90, 98, -57, 93, -29, 137, -18, 141, -69, 169, -71, 169, -32, 157, 63, 116, 98, 54, 74, 61, 128, -13, 137, -11, 74, -41, 80, -43, 133, -84, 142, -93, 132, -78, 83, -95, 74, -113, 75, -114, 109, -108, 132, -141, 138, -165, 130, -156, 37, -173, 22, -178, -62, -143, -106, -98, -120, -54, -115)

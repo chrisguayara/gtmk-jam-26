@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://bmiiaymff8npb"]
 
 [ext_resource type="Script" uid="uid://ciqgl7egv17q2" path="res://scripts/hunt.gd" id="1_2ohfr"]
+[ext_resource type="Texture2D" uid="uid://k0grurbsmrj3" path="res://assets/placeholders/Background1.png" id="2_13tjr"]
 
 [node name="hunt" type="Node2D" unique_id=1126931706]
 script = ExtResource("1_2ohfr")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1569556811]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_13tjr")

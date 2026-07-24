@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://8l8ju2u85gq2"]
+
+[ext_resource type="Texture2D" uid="uid://dpkky5xuvap5a" path="res://assets/placeholders/dodo.png" id="1_bjelp"]
+
+[node name="Dodo" type="Node2D" unique_id=759311553]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=629469796]
+texture = ExtResource("1_bjelp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1959920295]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1533828153]
+polygon = PackedVector2Array(46, -48, 66, -54, 96, -49, 125, -42, 152, -45, 166, -34, 169, -15, 159, -11, 149, -13, 115, 0, 81, 4, 66, 28, 50, 85, 37, 110, 21, 136, 5, 130, -20, 136, -21, 156, -50, 171, -76, 166, -80, 144, -119, 134, -148, 139, -137, 97, -109, 57, -73, 45, -28, 45, 15, 48, 32, 13, 32, -29)

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dxj0i6yqtl2wv"]
+
+[ext_resource type="Texture2D" uid="uid://djw7uyjuwjxgl" path="res://assets/placeholders/bunny.png" id="1_kqc4y"]
+
+[node name="rabbit" type="Node2D" unique_id=685376942]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1791893283]
+texture = ExtResource("1_kqc4y")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1667610814]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=717719450]
+polygon = PackedVector2Array(-27, 59, -12, 67, 0, 79, 0, 57, 10, 52, 35, 98, 44, 131, 52, 139, 49, 152, 31, 159, 28, 163, 31, 170, 29, 176, 25, 177, 15, 176, 6, 179, -6, 173, -9, 167, -23, 169, -34, 169, -34, 176, -40, 179, -47, 179, -57, 178, -66, 169, -64, 157, -76, 142, -77, 124, -84, 119, -83, 108, -77, 101, -65, 105, -59, 105, -46, 101, -24, 106, -34, 92, -37, 73, -35, 60)
