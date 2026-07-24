@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cupgmb6388vjs"]
+
+[ext_resource type="Script" uid="uid://c3an43acqv2na" path="res://globals/scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://8bx3ahwjagwo" path="res://assets/backgrounds/weapons_shop.png" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://cwlp8g4fth2qj" path="res://assets/backgrounds/weapons/axe.png" id="3_ajxib"]
+[ext_resource type="Texture2D" uid="uid://u0dxv0swfef3" path="res://assets/backgrounds/weapons/bow.png" id="4_y6sft"]
+[ext_resource type="Texture2D" uid="uid://cxfuftk40ex7n" path="res://assets/backgrounds/weapons/rocks.png" id="5_m4ofw"]
+[ext_resource type="Texture2D" uid="uid://bnouet8xuqcc" path="res://assets/backgrounds/weapons/spear.png" id="6_heatd"]
+[ext_resource type="Texture2D" uid="uid://4v1h47udh2sr" path="res://assets/backgrounds/weapons/sling.png" id="7_1v8qu"]
+
+[node name="weapon_shop" type="Node2D" unique_id=1839950798]
+script = ExtResource("1_lx5au")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1938930473]
+offset_left = -19.0
+offset_top = -37.0
+offset_right = 1311.0
+offset_bottom = 733.0
+texture = ExtResource("2_xfvoa")
+
+[node name="axe_hover" type="Area2D" parent="." unique_id=1145279416]
+position = Vector2(590, 161)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="axe_hover" unique_id=773627506]
+polygon = PackedVector2Array(40.6, -112, 10.699997, -112, -6, -97.2, -22.7, -92, -26.8, -92, -41, -69.4, -41, -62.2, -67, -37.1, -67, -11, -34.3, 8, -30.099998, 8, -21, 52.5, -21, 56.300003, 9.199997, 112, 38.1, 112, 19, 4.5999985, 19, 4, 40.199997, 4, 67, -9.400002, 67, -46.300003, 49, -101.9, 49, -105.4)
+
+[node name="bow_hover" type="Area2D" parent="." unique_id=756486778]
+position = Vector2(831, 200)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bow_hover" unique_id=1192351723]
+polygon = PackedVector2Array(22.5, -167.6, 21.199997, -168, 0.29999924, -168, -32.5, -107, -34.6, -107, -43.5, -64.8, -43.5, 4.5, -42.5, 14.5, -42.5, 23.800003, -33.3, 35.300003, -37.9, 47, -41.6, 47, -34.5, 81.5, -34.5, 85.5, 14.5, 158.6, 14.5, 161.4, 22.800003, 168, 43.5, 168, 43.5, 13.600006, 37.5, -14, 31.5, -139.2, 31.5, -147.3, 22.5, -163.5)
+
+[node name="rock_hover" type="Area2D" parent="." unique_id=1621356805]
+position = Vector2(670, 526)
+
+[node name="rock_collider" type="CollisionPolygon2D" parent="rock_hover" unique_id=1054654485]
+polygon = PackedVector2Array(-11, -60, -43.8, -60, -61, -46.4, -61, -31.1, -49.2, -18, -36.4, -18, -39, -14.799999, -39, 0.5, -24, 11.5, -24, 15, -1.300003, 15, 6.699997, 3, 11.400002, 3, 8.199997, -9.700001, 27.400002, -11, 32.1, -11, 43, -22, 44.899994, -22, 47.800003, -27.099998, 34, -49.5, 34, -53.1, 10.5, -58, 4.5, -58, -7.5999985, -50.1, -11, -58.1)
+
+[node name="rock_collider2" type="CollisionPolygon2D" parent="rock_hover" unique_id=1144874367]
+polygon = PackedVector2Array(86, -31, 86, -54, 71, -60, 60, -60, 60, -58, 57, -55, 51.100006, -55, 57, -37.3, 57, -33.1, 66, -28.1, 66, -22.400002)
+
+[node name="rock_collider3" type="CollisionPolygon2D" parent="rock_hover" unique_id=94569703]
+polygon = PackedVector2Array(52, -24.900002, 52, -19.5, 44.100006, -13, 38.300003, -13, 43, 2.7000008, 43, 7.5999985, 60.800003, 9, 68.3, 9, 75.3, 1, 80.399994, 1, 77, -12.799999, 77, -16.599998)
+
+[node name="rock_collider4" type="CollisionPolygon2D" parent="rock_hover" unique_id=101035293]
+polygon = PackedVector2Array(-40, -15.5, -79, -19.5, -79, -15.5, -86, -10.299999, -86, 13, -75, 20.5, -75, 23.5, -49.2, 26, -43.9, 26, -33.9, 6, -32.8, 6, -30.099998, 0.29999924, -40, -11.900002)
+
+[node name="rock_collider5" type="CollisionPolygon2D" parent="rock_hover" unique_id=576570922]
+polygon = PackedVector2Array(15, -1.2000008, 15, 4, 5.800003, 14, -1.0999985, 14, 8, 32.199997, 8, 35.1, 19.800003, 41, 31.5, 41, 41.5, 28, 47.600006, 28, 39, 7.9000015, 39, 4)
+
+[node name="rock_collider6" type="CollisionPolygon2D" parent="rock_hover" unique_id=1500427778]
+polygon = PackedVector2Array(86, 23, 86, 13.599998, 67.3, 1.2000008, 62, 4, 62, 5.699997, 50, 17, 42.899994, 17, 52, 35.199997, 52, 40.699997, 72.7, 38, 76.8, 38)
+
+[node name="rock_collider7" type="CollisionPolygon2D" parent="rock_hover" unique_id=1560918194]
+polygon = PackedVector2Array(-39.8, 30.199997, -45, 33.1, -45, 35, -51, 41, -53.5, 41, -55.9, 47.6, -40.8, 60, -33.6, 60, -27, 51.800003, -27, 38.199997)
+
+[node name="rock_collider8" type="CollisionPolygon2D" parent="rock_hover" unique_id=754614162]
+polygon = PackedVector2Array(5.9000015, 50, -10.599998, 32.1, -17, 34.6, -17, 37.699997, -24, 50.699997, -24, 58.1, -22.099998, 60, -0.40000153, 60, 1.9000015, 56, 3.300003, 56)
+
+[node name="spear_hover" type="Area2D" parent="." unique_id=850573506]
+position = Vector2(725, 191)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spear_hover" unique_id=67280544]
+polygon = PackedVector2Array(24.5, -175.5, 13.099998, -181.5, -2.7999992, -181.5, -30.5, -138.2, -30.5, -96.7, -24.8, -58.5, -28.5, 130.4, -28.5, 142.5, -16.5, 170.5, -16.5, 173.70001, -7.799999, 181.5, 15.799999, 181.5, 7, 97.5, 9.5, 2.600006, 9.5, -11.5, 23.5, -103.1, 23.5, -105.7, 30.5, -113.9, 30.5, -153.9, 24.5, -171.3)
+
+[node name="sling_hover" type="Area2D" parent="." unique_id=956427466]
+position = Vector2(415, 196)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="sling_hover" unique_id=1687845661]
+polygon = PackedVector2Array(35.5, -116, -9.900002, -116, -31.5, -96, -33.8, -96, -46.8, -66, -48.5, -66, -52.5, -47.5, -52.5, -32.9, -46.6, -27, -44.2, -27, -41.5, 9.400002, -41.5, 15, -66.5, 75, -66.5, 105, -41.9, 109, -36.9, 109, -19.2, 53.899994, -25.5, 109.7, -25.5, 116, -4.5, 116, 2.199997, 106, 5.0999985, 106, 9.5, 50.199997, 9.5, 35.699997, -2.5, -64.6, -2.5, -70.4, 12.699997, -91, 16.900002, -91, 28.199997, -74.8, 18.5, -56, 15.300003, -56, 17.5, -0.80000305, 17.5, 5, 48.5, 21.899994, 48.5, 23.100006, 54, 25.899994, 66.5, 16.5, 66.5, -83, 35.5, -113.2)
+
+[node name="axe" type="Sprite2D" parent="." unique_id=322465653]
+position = Vector2(590, 161)
+texture = ExtResource("3_ajxib")
+
+[node name="bow" type="Sprite2D" parent="." unique_id=1199098033]
+position = Vector2(831, 200)
+texture = ExtResource("4_y6sft")
+
+[node name="rocks" type="Sprite2D" parent="." unique_id=508082831]
+position = Vector2(670, 526)
+texture = ExtResource("5_m4ofw")
+
+[node name="spear" type="Sprite2D" parent="." unique_id=444602536]
+position = Vector2(725, 191)
+texture = ExtResource("6_heatd")
+
+[node name="sling" type="Sprite2D" parent="." unique_id=578075120]
+position = Vector2(415, 196)
+texture = ExtResource("7_1v8qu")
+
+[node name="PriceLabel" type="Label" parent="." unique_id=2036848738]
+offset_left = 984.0
+offset_top = 31.0
+offset_right = 1024.0
+offset_bottom = 54.0
+
+[node name="wallet" type="Label" parent="." unique_id=573771806]
+offset_left = 984.0
+offset_top = 31.0
+offset_right = 1024.0
+offset_bottom = 54.0
+text = "$"

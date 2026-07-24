@@ -14,7 +14,9 @@ const BUTCHERING_SCENE := preload("res://scenes/butcher.tscn")
 const SHOPPING_CENTER_SCENE := preload("res://scenes/shopping_center.tscn")
 
 const SHOP_SCENES := {
-	# example &"equipment_shop": preload("res://scenes/shop/equipment_shop.tscn"),
+	&"weapon_shop": preload("res://scenes/shop/weapon_shop.tscn"),
+	&"butcher_shop": preload("res://scenes/shop/butcher_shop.tscn"),
+	&"luretrap_shop": preload("res://scenes/shop/luretrap_shop.tscn"),
 }
 
 @export var hud: Node

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dkor3hbnc75y7"]
+
+[ext_resource type="Script" uid="uid://nbmcl6s1of5i" path="res://scripts/shops/butcher_shop.gd" id="1_kq21t"]
+[ext_resource type="Texture2D" uid="uid://ce44ossr2f207" path="res://assets/backgrounds/butcher_shop.png" id="2_sftrj"]
+[ext_resource type="Texture2D" uid="uid://dh46hv5bkgbri" path="res://assets/backgrounds/butcher/stone_knife.png" id="3_5p1w5"]
+[ext_resource type="Texture2D" uid="uid://umcwhux7fae4" path="res://assets/backgrounds/butcher/handle_knife.png" id="4_f8p3b"]
+[ext_resource type="Texture2D" uid="uid://10wkgqvhmsup" path="res://assets/backgrounds/butcher/obsidian_knife.png" id="5_mfuuq"]
+
+[node name="ButcherShop" type="Node2D" unique_id=118142257]
+script = ExtResource("1_kq21t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=191169797]
+offset_left = -28.0
+offset_top = -11.0
+offset_right = 1302.0
+offset_bottom = 759.0
+texture = ExtResource("2_sftrj")
+
+[node name="stone_knife" type="Sprite2D" parent="." unique_id=986043826]
+position = Vector2(414, 362)
+texture = ExtResource("3_5p1w5")
+
+[node name="handle_knife" type="Sprite2D" parent="." unique_id=169775527]
+position = Vector2(585, 323)
+texture = ExtResource("4_f8p3b")
+
+[node name="obsidian_knife" type="Sprite2D" parent="." unique_id=270715079]
+position = Vector2(813, 323)
+texture = ExtResource("5_mfuuq")
+
+[node name="stone_hover" type="Area2D" parent="." unique_id=284093757]
+position = Vector2(-399, 39)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stone_hover" unique_id=54448304]
+position = Vector2(813, 323)
+polygon = PackedVector2Array(4.5, -68.7, -8.4, -74.5, -25.5, -74.5, -36.5, -27.3, -36.5, 47.699997, -12.4, 74.5, 21.5, 74.5, 36.5, 50.199997, 36.5, -14.599998, 4.5, -65)
+
+[node name="handle_hover" type="Area2D" parent="." unique_id=1055621163]
+position = Vector2(-228, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="handle_hover" unique_id=609453425]
+position = Vector2(813, 323)
+polygon = PackedVector2Array(13, -85, -13, -85, -36, -32.3, -36, 21.699997, -22.4, 39, -21.6, 39, -18, 81.399994, -18, 85, 36, 85, 36, 49.699997, 32.800003, 29.199997, 36, 18.800003, 36, -40.6, 13, -83.3)
+
+[node name="obsidian_hover" type="Area2D" parent="." unique_id=1949812786]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obsidian_hover" unique_id=346013985]
+position = Vector2(813, 323)
+polygon = PackedVector2Array(-52.8, -100.5, -73.5, -100.5, -82.5, -76.9, -82.5, -7.4000015, -76.5, 2.800003, -76.5, 5.699997, -22.8, 54.399994, -27.5, 65.5, -27.5, 71.7, 34, 100.5, 65.8, 100.5, 82.5, 85.399994, 82.5, 63.600006, 46.5, 30.399994, 43.5, 20.599998, 43.5, 16.699997, 18.400002, 9.800003, -39.5, -82.9, -39.5, -85.4)
+
+[node name="PriceLabel" type="Label" parent="." unique_id=277678907]
+offset_left = 984.0
+offset_top = 31.0
+offset_right = 1024.0
+offset_bottom = 54.0
+
+[node name="wallet" type="Label" parent="." unique_id=1443951760]
+offset_left = 984.0
+offset_top = 31.0
+offset_right = 1024.0
+offset_bottom = 54.0
+text = "$"
+
+[node name="leave" type="Button" parent="." unique_id=565852248]
+offset_left = 602.0
+offset_top = 679.0
+offset_right = 705.0
+offset_bottom = 710.0
+text = "LEAVE SHOP"
+
+[connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

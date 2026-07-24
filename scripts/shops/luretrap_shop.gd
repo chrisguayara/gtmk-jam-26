@@ -1,5 +1,5 @@
 extends Node2D
-class_name WeaponShop
+class_name LureTrapShop
 
 
 const ITEM_COSTS: Dictionary = {
@@ -14,19 +14,12 @@ const ITEM_COSTS: Dictionary = {
 @onready var price_label: Label = $PriceLabel  
 
 @onready var _sprites: Dictionary = {
-	&"rocks": $rocks,
-	&"spear": $spear,
-	&"bow": $bow,
-	&"axe": $axe,
-	&"sling": $sling,
+	#&"rocks": $rocks
 }
 
 @onready var _hover_areas: Dictionary = {
-	&"rocks": $rock_hover,
-	&"spear": $spear_hover,
-	&"bow": $bow_hover,
-	&"axe": $axe_hover,
-	&"sling": $sling_hover,
+	#&"rocks": $rock_hover
+
 }
 
 func _ready() -> void:

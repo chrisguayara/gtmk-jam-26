@@ -1,33 +1,26 @@
 extends Node2D
-class_name WeaponShop
+class_name ButcherShop
 
 
 const ITEM_COSTS: Dictionary = {
-	&"rocks": 0,
-	&"spear": 20,
-	&"bow": 35,
-	&"axe": 25,
-	&"sling": 10,
+	&"stone_knife": 0,
+	&"handle_knife": 10,
+	&"obsidian_knife": 25,
 }
-
-@onready var wallet_label: Label = $wallet
-@onready var price_label: Label = $PriceLabel  
-
-@onready var _sprites: Dictionary = {
-	&"rocks": $rocks,
-	&"spear": $spear,
-	&"bow": $bow,
-	&"axe": $axe,
-	&"sling": $sling,
-}
-
 @onready var _hover_areas: Dictionary = {
-	&"rocks": $rock_hover,
-	&"spear": $spear_hover,
-	&"bow": $bow_hover,
-	&"axe": $axe_hover,
-	&"sling": $sling_hover,
+	&"stone_knife": $stone_hover,
+	&"handle_knife": $handle_hover,
+	&"obsidian_knife": $obsidian_hover,
+	
 }
+@onready var _sprites: Dictionary = {
+	&"stone_knife": $stone_knife,
+	&"handle_knife" : $handle_knife,
+	&"obsidian_knife":$obsidian_knife
+}
+# Called when the node enters the scene tree for the first time.
+@onready var wallet_label: Label = $wallet
+@onready var price_label: Label = $PriceLabel
 
 func _ready() -> void:
 	wallet_label.text = str(RunManager.wallet)
@@ -67,5 +60,6 @@ func _buy(item_id: StringName, cost: int) -> void:
 func _on_wallet_changed(_old: int, new_amount: int) -> void:
 	wallet_label.text = str(new_amount)
 
-func _on_finished_pressed() -> void:
+
+func _on_leave_pressed() -> void:
 	Signals.shop_exited.emit()
