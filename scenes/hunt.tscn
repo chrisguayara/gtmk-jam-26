@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ciqgl7egv17q2" path="res://scripts/hunt.gd" id="1_2ohfr"]
 [ext_resource type="Texture2D" uid="uid://k0grurbsmrj3" path="res://assets/placeholders/Background1.png" id="2_13tjr"]
+[ext_resource type="PackedScene" uid="uid://bmf2k3amuwms1" path="res://scenes/hunter.tscn" id="3_8xw4e"]
 
 [node name="hunt" type="Node2D" unique_id=1126931706]
 script = ExtResource("1_2ohfr")
@@ -10,3 +11,6 @@ script = ExtResource("1_2ohfr")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_13tjr")
+
+[node name="Hunter" parent="." unique_id=1464014446 instance=ExtResource("3_8xw4e")]
+position = Vector2(104, 538)

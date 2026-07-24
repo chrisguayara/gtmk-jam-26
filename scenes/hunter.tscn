@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cn5privf0midj" path="res://assets/placeholders/arm.png" id="2_kr1wx"]
 
 [node name="Hunter" type="Node2D" unique_id=1464014446]
-position = Vector2(145, 210)
 script = ExtResource("1_amnbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1732390465]
