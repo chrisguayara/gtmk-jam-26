@@ -6,8 +6,10 @@ var assets: Array = preload_folder("res://assets/placeholders/ButcherPartsGeneri
 @export var cuts_available: int = 5
 var _cuts_remaining: int = 0
 
+var animals_to_butcher: Array[Resource] = []
 
-
+func setup(animals_caught: Array) -> void:
+	animals_to_butcher = animals_caught
 
 func _ready() -> void:
 	_cuts_remaining = cuts_available

@@ -5,7 +5,7 @@ signal main_ready
 signal hunt_started
 signal hunt_beast_caught(beast: Resource)
 signal hunt_resource_depleted
-signal hunt_round_complete
+signal hunt_round_complete(animals_caught: Array)
 
 signal butcher_started
 signal butcher_cut_made(cuts_remaining: int)

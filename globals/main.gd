@@ -33,7 +33,7 @@ func _ready() -> void:
 	game_state_machine.register_state(IN_SHOP, _enter_shop, _exit_screen)
 
 	# scene wiring
-	Signals.hunt_round_complete.connect(func(): GameManager.request_state(BUTCHERING))
+	Signals.hunt_round_complete.connect(func(animals_caught: Array):GameManager.request_state(BUTCHERING, animals_caught))
 	Signals.butcher_round_complete.connect(func(): GameManager.request_state(SHOPPING_CENTER))
 	Signals.shop_entered.connect(func(shop_id): GameManager.request_state(IN_SHOP, shop_id))
 	Signals.shop_exited.connect(func(): GameManager.request_state(SHOPPING_CENTER))
@@ -60,8 +60,11 @@ func _enter_main_menu(_args = null) -> void:
 func _enter_hunting(_args = null) -> void:
 	_swap_screen(HUNTING_SCENE)
 
-func _enter_butchering(_args = null) -> void:
+func _enter_butchering(animals_caught: Array) -> void:
 	_swap_screen(BUTCHERING_SCENE)
+
+	if _active_screen.has_method("setup"):
+		_active_screen.setup(animals_caught)
 
 func _enter_shopping_center(_args = null) -> void:
 	_swap_screen(SHOPPING_CENTER_SCENE)
