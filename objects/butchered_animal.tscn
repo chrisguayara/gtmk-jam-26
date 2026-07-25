@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dyd1ovlhh2ei6"]
+
+[ext_resource type="Texture2D" uid="uid://dxy1403xepq42" path="res://assets/placeholders/ButcherPartsGeneric/costume1.png" id="1_78wiw"]
+[ext_resource type="Script" uid="uid://csa7vk5fsfiv5" path="res://objects/butchered_animal.gd" id="1_gwgv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwgv3"]
+size = Vector2(217, 148)
+
+[node name="ButcheredAnimal" type="StaticBody2D" unique_id=762391112]
+z_index = 1
+script = ExtResource("1_gwgv3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2050191642]
+texture = ExtResource("1_78wiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=156874979]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gwgv3")
+
+[node name="Label" type="Label" parent="." unique_id=28539889]
+offset_left = 61.0
+offset_top = -106.0
+offset_right = 101.0
+offset_bottom = -83.0
+metadata/_edit_use_anchors_ = true

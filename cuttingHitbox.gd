@@ -1,3 +1,4 @@
+class_name CuttingLine
 extends Node2D
 
 @onready var endPoint1 = get_node("CutNode1")
@@ -9,12 +10,15 @@ var swept_area = null
 var ready_to_be_cut = false
 var cutting = false
 
+signal finished_cutting(score: int)
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func activate(firstPosition: Vector2,secondPosition: Vector2,scale: float = 1) -> void:
 	
 	print("ready!")
+	print(Vector2(scale, scale))
 	endPoint1.scale = Vector2(scale, scale)
 	endPoint2.scale = Vector2(scale, scale)
 	endPoint1.position = firstPosition
@@ -24,12 +28,16 @@ func activate(firstPosition: Vector2,secondPosition: Vector2,scale: float = 1) -
 	swept_area.add_child(swept_shape)
 	add_child(swept_area)
 	
-	part.position = (endPoint1.global_position + endPoint2.global_position) / 2.0
-	
-	
-		
+	part.position = (endPoint1.position + endPoint2.position) / 2.0
+	part.z_index = -1
 	
 	process_mode = Node.PROCESS_MODE_INHERIT
+
+func setTexture(newTexture: Texture) -> void:
+	for child in part.get_children():
+		if child is Sprite2D:
+			child.texture = newTexture
+	
 
 var lastMousePosition
 var otherEndPoint
@@ -39,7 +47,7 @@ var done = false
 func _process(delta: float) -> void:
 	#Check if we should enter or exit cutting mode.
 	if done == true: return
-	if ready_to_be_cut && Input.is_action_just_pressed("mouse_down") && not cutting:
+	if ready_to_be_cut && Input.is_action_pressed("mouse_down") && not cutting:
 		cutting = true
 		lastMousePosition = get_global_mouse_position()
 		
@@ -49,18 +57,19 @@ func _process(delta: float) -> void:
 			otherEndPoint = endPoint1
 		return 
 		#Set first mouse positiion and start processing
+	if not cutting: 
+		return
 	if not Input.is_action_pressed("mouse_down") || !mouse_is_touching(swept_area):
 		cutting = false
 		
-		if mouse_is_touching_rect(otherEndPoint):
-			
-			part.jump_and_spin(score/4)
-			print(score)
-			
-			done = true
+	if mouse_is_touching_rect(otherEndPoint):
+		
+		part.jump_and_spin(score/4)
+		#print(score)
+		
+		done = true
 
-	if not cutting: 
-		return
+
 	#This part only runs when you are in cutting mode
 	var currentMousePosition = get_global_mouse_position()
 	var magnitude = lastMousePosition.distance_to(currentMousePosition)
@@ -114,15 +123,19 @@ func mouse_is_touching_rect(area: Area2D) -> bool: #For rectangles
 func generate_swept_collision(area_a: Area2D, area_b: Area2D) -> CollisionPolygon2D:
 	var points_a = get_global_points(area_a)
 	var points_b = get_global_points(area_b)
-
 	var all_points := PackedVector2Array()
 	all_points.append_array(points_a)
 	all_points.append_array(points_b)
-
+	
 	var hull = Geometry2D.convex_hull(all_points)
-
+	
+	# Convert hull points from global space to target_parent's local space
+	var local_hull := PackedVector2Array()
+	for point in hull:
+		local_hull.append(to_local(point))
+	
 	var poly = CollisionPolygon2D.new()
-	poly.polygon = hull
+	poly.polygon = local_hull
 	return poly
 
 
@@ -139,3 +152,7 @@ func _on_cut_node_2_mouse_entered() -> void:
 
 func _on_cut_node_2_mouse_exited() -> void:
 	ready_to_be_cut = false
+
+func _on_part_visibility_changed() -> void:#part officially fell out of the screen. We done now.
+	print("Done now, sending score")
+	finished_cutting.emit(score)

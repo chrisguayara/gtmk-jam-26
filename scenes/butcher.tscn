@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://xjo2v0tn4giv"]
 
 [ext_resource type="Script" uid="uid://dodnbxxv3yl1f" path="res://scripts/butcher.gd" id="1_2xxjk"]
+[ext_resource type="PackedScene" uid="uid://dyd1ovlhh2ei6" path="res://objects/butchered_animal.tscn" id="2_4jg7d"]
 
 [node name="butcher" type="Node2D" unique_id=1063997430]
 script = ExtResource("1_2xxjk")
+
+[node name="ButcheredAnimal" parent="." unique_id=762391112 instance=ExtResource("2_4jg7d")]
+position = Vector2(602, 331)
+collision_layer = 0
+collision_mask = 0
+
+[connection signal="done" from="ButcheredAnimal" to="." method="_on_butchered_animal_done"]
