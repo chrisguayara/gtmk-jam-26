@@ -18,10 +18,9 @@ var _hop_target: Vector2
 var _hop_time: float = 0.0
 var _visual_start_position: Vector2
 
-
 func _ready() -> void:
 	_visual_start_position = visual.position
-	_start_next_hop()
+	call_deferred("_start_next_hop")
 
 
 func _process(delta: float) -> void:
@@ -59,28 +58,41 @@ func _process(delta: float) -> void:
 	if progress >= 1.0:
 		_finish_hop()
 
+func _is_inside_screen(point: Vector2) -> bool:
+	var screen_width := get_viewport_rect().size.x
+	var margin := 50.0
 
-func _start_next_hop() -> void:
-	var direction := Vector2(
-		randf_range(-1.0, 1.0),
-		randf_range(-0.15, 0.15)
-	).normalized()
-
-	var distance := randf_range(
-		hop_distance_min,
-		hop_distance_max
+	return (
+		point.x >= margin
+		and point.x <= screen_width - margin
 	)
 
+func _start_next_hop() -> void:
 	_hop_start = global_position
-	_hop_target = global_position + direction * distance
+
+	while true:
+		var direction := Vector2.LEFT
+
+		if randf() < 0.5:
+			direction = Vector2.RIGHT
+
+		var distance := randf_range(
+			hop_distance_min,
+			hop_distance_max
+		)
+
+		var target := _hop_start + direction * distance
+
+		if _is_inside_screen(target):
+			_hop_target = target
+			_update_facing(direction)
+			break
+
 	_hop_time = 0.0
 	_is_hopping = true
 
-	_update_facing(direction)
-
 	if animation_player.has_animation("hop"):
 		animation_player.play("hop")
-
 
 func _finish_hop() -> void:
 	_is_hopping = false
