@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dco1alkrgyqga" path="res://assets/placeholders/mammoth.png" id="1_ckswp"]
 
 [node name="Mammoth" type="Node2D" unique_id=1464306291]
+scale = Vector2(1.4, 1.4)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276928252]
 texture = ExtResource("1_ckswp")

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dftnfpgwtlc03" path="res://assets/placeholders/raven.png" id="1_mx8py"]
 
 [node name="raven" type="Node2D" unique_id=1373672552]
+scale = Vector2(0.8, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=943835818]
 texture = ExtResource("1_mx8py")
