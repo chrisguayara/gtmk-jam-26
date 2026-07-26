@@ -76,20 +76,19 @@ func _on_area_entered(area: Area2D) -> void:
 
 	match projectile_name:
 		"rock":
-			damage = 1
-
-		"sling":
 			damage = 5
 
+		"sling":
+			damage = 12
+
 		"spear":
-			damage = 10
+			damage = 15
 
 		"axe":
-			damage = 15
+			damage = 20
 
 		"bow":
 			damage = 30
-
 		_:
 			push_warning("Unknown projectile: " + projectile_name)
 			return

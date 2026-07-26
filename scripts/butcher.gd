@@ -41,12 +41,15 @@ func _ready() -> void:
 	
 	#Insert array HERE
 	
-	if len(animals_to_butcher) == 0:
-		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
-		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
-		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
-		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+	#if len(animals_to_butcher) == 0:
+		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+	if len(animals_to_butcher) > 0:
 		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+
 	_cuts_remaining = cuts_available
 	Signals.butcher_started.emit()
 	print("butcher ready!")
@@ -65,9 +68,10 @@ func _ready() -> void:
 		await next_animal
 		move_animal_to(new_animal,1200)
 		print("move animal.")
-	
 	print("total score is: " + str(total_score))
 	RunManager.wallet = RunManager.wallet + (total_score / 100)
+	Signals.butcher_round_complete.emit()
+
 	print(RunManager.wallet)
 	#End here
 
