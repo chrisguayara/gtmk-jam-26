@@ -63,7 +63,7 @@ func _ready() -> void:
 		await next_animal
 		move_animal_to(new_animal,1200)
 		print("move animal.")
-	
+	Signals.butcher_round_complete.emit()
 	
 
 func make_cut() -> void:

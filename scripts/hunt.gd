@@ -181,7 +181,6 @@ func _end_round() -> void:
 		_animals_caught.duplicate()
 	)
 
-	get_tree().change_scene_to_file("res://Scenes/butchering.tscn")
 
 func _get_random_spawn_marker(use_sky_spawns: bool) -> Marker2D:
 	var valid_markers: Array[Marker2D] = []
