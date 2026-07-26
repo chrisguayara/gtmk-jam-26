@@ -64,13 +64,13 @@ func scoring(subtracted_score: int) -> void:
 	score -= clamp(subtracted_score,0,5000)
 	cuts -= 1
 	if cuts <= 0:
-		done.emit()
+		done.emit(score)
 		
 
 
 
 func set_textures(textures: Array[Texture2D]) -> void:
- 
+	print(len(cutting_lines))
 	for i in range(len(textures)):
 		if i >= len(cutting_lines):
 			break

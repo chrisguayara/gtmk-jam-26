@@ -10,8 +10,11 @@
 script = ExtResource("1_2xxjk")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=551343195]
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = -4
+offset_left = -630.0
+offset_top = -362.0
+offset_right = 650.0
+offset_bottom = 358.0
 texture = ExtResource("2_oqk8g")
 
 [node name="butchered_dodo" parent="." unique_id=1195703499 instance=ExtResource("2_ch0fw")]
@@ -21,9 +24,14 @@ visible = false
 visible = false
 
 [node name="ButcheredAnimal" parent="." unique_id=762391112 instance=ExtResource("2_4jg7d")]
+visible = false
 position = Vector2(602, 331)
 collision_layer = 0
 collision_mask = 0
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=750311803]
+zoom = Vector2(2, 2)
+
+[connection signal="done" from="butchered_dodo" to="." method="_on_butchered_dodo_done"]
 [connection signal="done" from="butchered_bunny" to="." method="_on_butchered_bunny_done"]
 [connection signal="done" from="ButcheredAnimal" to="." method="_on_butchered_animal_done"]
