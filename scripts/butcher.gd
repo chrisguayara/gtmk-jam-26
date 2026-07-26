@@ -39,6 +39,8 @@ func setup(animals_caught: Array) -> void:
 
 func _ready() -> void:
 	
+	#Insert array HERE
+	
 	if len(animals_to_butcher) == 0:
 		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
 		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
@@ -50,7 +52,7 @@ func _ready() -> void:
 	print("butcher ready!")
 	#get_animal(load("res://scenes/animals/rabbit.tscn"))
 
-	for animal in animals_to_butcher:
+	for animal in animals_to_butcher: #MAIN LOOP
 		var butcher = get_animal(animal)
 		
 		var new_animal = butcher.instantiate()
@@ -63,8 +65,11 @@ func _ready() -> void:
 		await next_animal
 		move_animal_to(new_animal,1200)
 		print("move animal.")
-	Signals.butcher_round_complete.emit()
 	
+	print("total score is: " + str(total_score))
+	RunManager.wallet = RunManager.wallet + (total_score / 100)
+	print(RunManager.wallet)
+	#End here
 
 func make_cut() -> void:
 	if _cuts_remaining <= 0:
