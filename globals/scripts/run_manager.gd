@@ -11,7 +11,7 @@ var wallet: int = 0:
 func start_new_run() -> void:
 	round_number = 0
 	wallet = 0
-	EquipmentManager.reset_for_new_run()
+	EquipmentManager.reset_for_new_run() 
 	print("[RunManager] New run started")
 
 func advance_round() -> void:

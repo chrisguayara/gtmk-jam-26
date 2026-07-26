@@ -1,27 +1,33 @@
 [gd_scene format=3 uid="uid://c815tsabmswg8"]
 
 [ext_resource type="Script" uid="uid://csf2llwxfssxi" path="res://globals/scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://b1pue8gefeyq2" path="res://assets/backgrounds/finalbgs/MAINMENU.png" id="2_ekxnf"]
 
-[node name="MainMenu" type="Node2D" unique_id=1475613891 node_paths=PackedStringArray("hunt_button", "butcher_button", "shop_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="MainMenu" type="Node2D" unique_id=1475613891 node_paths=PackedStringArray("shop_button")]
 script = ExtResource("1_l6cm7")
-hunt_button = NodePath("VBoxContainer/Hunt")
-butcher_button = NodePath("VBoxContainer/Butcher")
-shop_button = NodePath("VBoxContainer/Shop")
+shop_button = NodePath("Shop")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1621201516]
-offset_left = 339.0
-offset_top = 326.0
-offset_right = 939.0
-offset_bottom = 826.0
+[node name="TextureRect" type="TextureRect" parent="." unique_id=972547955]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ekxnf")
 
-[node name="Shop" type="Button" parent="VBoxContainer" unique_id=1622734609]
-layout_mode = 2
-text = "Shop"
-
-[node name="Hunt" type="Button" parent="VBoxContainer" unique_id=51238230]
-layout_mode = 2
-text = "Hunt"
-
-[node name="Butcher" type="Button" parent="VBoxContainer" unique_id=1624719426]
-layout_mode = 2
-text = "Butcher"
+[node name="Shop" type="Button" parent="." unique_id=1622734609]
+offset_left = 497.0
+offset_top = 449.0
+offset_right = 1097.0
+offset_bottom = 480.0
+scale = Vector2(0.46959364, 1.886858)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
