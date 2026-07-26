@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dorqexkkd0lqc" path="res://globals/scripts/state_machine.gd" id="2_w0p5f"]
 [ext_resource type="Script" uid="uid://dnh4ul04xtf8c" path="res://globals/hud.gd" id="3_snysl"]
 [ext_resource type="Script" uid="uid://cyis3qeymgg3h" path="res://globals/music_manager.gd" id="4_e6gbw"]
+[ext_resource type="AudioStream" uid="uid://bgtlfk5pqojyw" path="res://assets/audio/music/shopping.ogg" id="5_bytgg"]
+[ext_resource type="AudioStream" uid="uid://yd8bgvr5j7ji" path="res://assets/audio/music/mainmenu.mp3" id="5_pf642"]
+[ext_resource type="AudioStream" uid="uid://txw8aadtaaia" path="res://assets/audio/music/hunting.ogg" id="6_702u3"]
 
 [node name="main" type="Node2D" unique_id=1081999014 node_paths=PackedStringArray("hud", "game_state_machine", "content_container")]
 script = ExtResource("1_a7bik")
@@ -33,5 +36,10 @@ offset_bottom = 23.0
 script = ExtResource("4_e6gbw")
 
 [node name="shopping" type="AudioStreamPlayer" parent="MusicManager" unique_id=2127132067]
+stream = ExtResource("5_bytgg")
 
 [node name="hunting" type="AudioStreamPlayer" parent="MusicManager" unique_id=602250617]
+stream = ExtResource("6_702u3")
+
+[node name="mainmenu" type="AudioStreamPlayer" parent="MusicManager" unique_id=605380918]
+stream = ExtResource("5_pf642")
