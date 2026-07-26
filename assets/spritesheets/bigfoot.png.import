@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de801fop4knt8"
-path="res://.godot/imported/bigfit_frontfacing.png-96e6e9ffcc74495e3d2220922f78b7a6.ctex"
+uid="uid://14c65so6iec3"
+path="res://.godot/imported/bigfoot.png-b9ab60f4387bc696d40c43a4bffb1994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/animals/bigfit_frontfacing.png"
-dest_files=["res://.godot/imported/bigfit_frontfacing.png-96e6e9ffcc74495e3d2220922f78b7a6.ctex"]
+source_file="res://assets/spritesheets/bigfoot.png"
+dest_files=["res://.godot/imported/bigfoot.png-b9ab60f4387bc696d40c43a4bffb1994.ctex"]
 
 [params]
 
