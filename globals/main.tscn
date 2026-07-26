@@ -37,6 +37,7 @@ script = ExtResource("4_e6gbw")
 
 [node name="shopping" type="AudioStreamPlayer" parent="MusicManager" unique_id=2127132067]
 stream = ExtResource("5_bytgg")
+volume_db = -4.394
 
 [node name="hunting" type="AudioStreamPlayer" parent="MusicManager" unique_id=602250617]
 stream = ExtResource("6_702u3")
