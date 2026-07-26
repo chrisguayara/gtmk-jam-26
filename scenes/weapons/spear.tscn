@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cqmv41xqhoi13"]
+
+[ext_resource type="Texture2D" uid="uid://bnouet8xuqcc" path="res://assets/backgrounds/weapons/spear.png" id="1_8fn8c"]
+[ext_resource type="Script" uid="uid://br4tpypfkuhxv" path="res://scripts/spear.gd" id="1_f4mc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2yq"]
+
+[node name="spear" type="Area2D" unique_id=379314866 groups=["Projectile"]]
+script = ExtResource("1_f4mc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=286784690]
+texture = ExtResource("1_8fn8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=215214151]
+position = Vector2(5, -169)
+shape = SubResource("RectangleShape2D_3p2yq")

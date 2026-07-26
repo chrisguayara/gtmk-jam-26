@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bykesb5ujtde1" path="res://globals/main.gd" id="1_a7bik"]
 [ext_resource type="Script" uid="uid://dorqexkkd0lqc" path="res://globals/scripts/state_machine.gd" id="2_w0p5f"]
 [ext_resource type="Script" uid="uid://dnh4ul04xtf8c" path="res://globals/hud.gd" id="3_snysl"]
+[ext_resource type="Script" uid="uid://cyis3qeymgg3h" path="res://globals/music_manager.gd" id="4_e6gbw"]
 
 [node name="main" type="Node2D" unique_id=1081999014 node_paths=PackedStringArray("hud", "game_state_machine", "content_container")]
 script = ExtResource("1_a7bik")
@@ -29,5 +30,8 @@ offset_bottom = 23.0
 [node name="SceneContainer" type="Node2D" parent="." unique_id=486427060]
 
 [node name="MusicManager" type="Node2D" parent="." unique_id=926636106]
+script = ExtResource("4_e6gbw")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=2127132067]
+[node name="shopping" type="AudioStreamPlayer" parent="MusicManager" unique_id=2127132067]
+
+[node name="hunting" type="AudioStreamPlayer" parent="MusicManager" unique_id=602250617]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cw4mjmyba6ci8"]
+
+[ext_resource type="Script" uid="uid://twnfk6vutv80" path="res://scripts/slingrock.gd" id="1_w6qvd"]
+[ext_resource type="Texture2D" uid="uid://ch7royqtfy7f6" path="res://assets/sprites/weapon_rock_bolus.png" id="1_wsec6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6qvd"]
+radius = 17.029387
+
+[node name="slingrock" type="Area2D" unique_id=837577174]
+script = ExtResource("1_w6qvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1533479173]
+texture = ExtResource("1_wsec6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=261908812]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_w6qvd")

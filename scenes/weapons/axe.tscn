@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b74n5x2d247sk"]
+
+[ext_resource type="Texture2D" uid="uid://cwlp8g4fth2qj" path="res://assets/backgrounds/weapons/axe.png" id="1_sxbk6"]
+[ext_resource type="Script" uid="uid://bgyuvko216vdu" path="res://scripts/axe.gd" id="1_w43rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w43rl"]
+size = Vector2(120, 104)
+
+[node name="axe" type="Area2D" unique_id=1109025980 groups=["Projectile"]]
+script = ExtResource("1_w43rl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1034739970]
+texture = ExtResource("1_sxbk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=982236006]
+position = Vector2(0, -57)
+shape = SubResource("RectangleShape2D_w43rl")

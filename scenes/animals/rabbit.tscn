@@ -53,9 +53,9 @@ _data = {
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_gecnt")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1667610814]
+[node name="hitbox" type="Area2D" parent="." unique_id=1667610814]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1372441107]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1372441107]
 position = Vector2(-3.3333333, 5)
 shape = SubResource("CircleShape2D_lfxu0")
 

@@ -1,8 +1,15 @@
 extends Node2D
 class_name Dodo
 
+
+signal animal_caught(animal_data: Resource)
+
+@export var animal_data: Resource
+
+
 @export_group("Walking")
 @export var walk_speed: float = 30.0
+
 
 @export_group("Burst")
 @export var burst_speed_min: float = 110.0
@@ -10,16 +17,21 @@ class_name Dodo
 @export var burst_duration_min: float = 0.3
 @export var burst_duration_max: float = 0.8
 
+
 @export_group("Decision Timing")
 @export var decision_delay_min: float = 1.0
 @export var decision_delay_max: float = 3.0
 @export_range(0.0, 1.0) var burst_chance: float = 0.45
 @export_range(0.0, 1.0) var turn_chance: float = 0.3
 
+
 @export_group("Screen Bounds")
 @export var screen_margin: float = 50.0
 
+
+@onready var hitbox: Area2D = $hitbox
 @onready var sprite: Sprite2D = $Visual/Sprite2D
+
 
 var _direction: float = 1.0
 var _current_speed: float = 0.0
@@ -29,12 +41,18 @@ var _burst_time_remaining: float = 0.0
 
 var _decision_time_remaining: float = 0.0
 
+var _caught: bool = false
+
 
 func _ready() -> void:
+	hitbox.area_entered.connect(_on_area_entered)
 	call_deferred("_initialize_movement")
 
 
 func _process(delta: float) -> void:
+	if _caught:
+		return
+
 	if _is_bursting:
 		_update_burst(delta)
 	else:
@@ -42,6 +60,22 @@ func _process(delta: float) -> void:
 
 	_move_horizontally(delta)
 	_handle_screen_edges()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if _caught:
+		return
+
+	if not area.is_in_group("Projectile"):
+		return
+
+	_caught = true
+	hitbox.set_deferred("monitoring", false)
+
+	animal_caught.emit(animal_data)
+
+	area.queue_free()
+	queue_free()
 
 
 func _initialize_movement() -> void:
@@ -64,7 +98,6 @@ func _update_walk(delta: float) -> void:
 
 
 func _make_random_decision() -> void:
-	# Sometimes turn around.
 	if randf() < turn_chance:
 		_direction *= -1.0
 		_update_facing()

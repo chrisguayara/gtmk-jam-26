@@ -1,6 +1,10 @@
 extends Node2D
 class_name Rabbit
 
+signal animal_caught(animal_data: Resource)
+
+@export var animal_data: Resource
+
 @export var hop_distance_min: float = 80.0
 @export var hop_distance_max: float = 160.0
 @export var hop_duration: float = 0.45
@@ -8,6 +12,7 @@ class_name Rabbit
 @export var pause_duration_min: float = 0.2
 @export var pause_duration_max: float = 0.8
 
+@onready var hitbox: Area2D = $hitbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visual: Node2D = $Visual
 @onready var sprite: Sprite2D = $Visual/Sprite2D
@@ -17,8 +22,12 @@ var _hop_start: Vector2
 var _hop_target: Vector2
 var _hop_time: float = 0.0
 var _visual_start_position: Vector2
+var _caught: bool = false
+
 
 func _ready() -> void:
+	hitbox.area_entered.connect(_on_area_entered)
+
 	_visual_start_position = visual.position
 	call_deferred("_start_next_hop")
 
@@ -35,7 +44,6 @@ func _process(delta: float) -> void:
 		1.0
 	)
 
-	# Smooth movement from the starting point to the target.
 	var movement_progress := smoothstep(
 		0.0,
 		1.0,
@@ -47,7 +55,6 @@ func _process(delta: float) -> void:
 		movement_progress
 	)
 
-	# Creates the upward-and-downward hop arc.
 	var vertical_offset := sin(progress * PI) * hop_height
 
 	visual.position = _visual_start_position + Vector2(
@@ -58,6 +65,25 @@ func _process(delta: float) -> void:
 	if progress >= 1.0:
 		_finish_hop()
 
+
+func _on_area_entered(area: Area2D) -> void:
+	if _caught:
+		return
+
+	if not area.is_in_group("Projectile"):
+		return
+
+	_caught = true
+	_is_hopping = false
+
+	hitbox.set_deferred("monitoring", false)
+
+	animal_caught.emit(animal_data)
+
+	area.queue_free()
+	queue_free()
+
+
 func _is_inside_screen(point: Vector2) -> bool:
 	var screen_width := get_viewport_rect().size.x
 	var margin := 50.0
@@ -67,7 +93,11 @@ func _is_inside_screen(point: Vector2) -> bool:
 		and point.x <= screen_width - margin
 	)
 
+
 func _start_next_hop() -> void:
+	if _caught:
+		return
+
 	_hop_start = global_position
 
 	while true:
@@ -94,6 +124,7 @@ func _start_next_hop() -> void:
 	if animation_player.has_animation("hop"):
 		animation_player.play("hop")
 
+
 func _finish_hop() -> void:
 	_is_hopping = false
 	visual.position = _visual_start_position
@@ -104,6 +135,9 @@ func _finish_hop() -> void:
 			pause_duration_max
 		)
 	).timeout
+
+	if not is_inside_tree() or _caught:
+		return
 
 	_start_next_hop()
 

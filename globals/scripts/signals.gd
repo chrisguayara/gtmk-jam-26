@@ -3,7 +3,7 @@ extends Node
 signal main_ready
 
 signal hunt_started
-signal hunt_beast_caught(beast: Resource)
+signal hunt_animal_caught(animal_data: Resource)
 signal hunt_resource_depleted
 signal hunt_round_complete(animals_caught: Array)
 

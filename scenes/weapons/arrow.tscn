@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dfpy1md6o521e"]
+
+[ext_resource type="Script" uid="uid://bq03vpgo6xaw2" path="res://scripts/arrow.gd" id="1_j1yim"]
+[ext_resource type="Texture2D" uid="uid://bad53aju2j3q7" path="res://assets/sprites/weapon_sphere.png" id="1_sr7iq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1yim"]
+size = Vector2(8.5, 8.5)
+
+[node name="arrow" type="Area2D" unique_id=1280823942 groups=["Projectile"]]
+script = ExtResource("1_j1yim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=366851105]
+position = Vector2(0.75, -51.25)
+shape = SubResource("RectangleShape2D_j1yim")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1106527725]
+texture = ExtResource("1_sr7iq")
