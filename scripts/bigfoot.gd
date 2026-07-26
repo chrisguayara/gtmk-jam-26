@@ -10,9 +10,9 @@ class_name Bigfoot
 @export var horizontal_margin: float = 50.0
 
 signal animal_caught(animal_data: Resource)
-
+var _caught: bool = false
 @export var animal_data: Resource
-
+@export var hit_points: int = 40
 @onready var hitbox: Area2D = $hitbox
 @onready var sprite: Sprite2D = $Visual/Sprite2D
 
@@ -35,12 +35,54 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if _caught:
+		return
+
 	if not area.is_in_group("Projectile"):
 		return
 
-	animal_caught.emit(animal_data)
+	var projectile_name := area.name.to_lower()
+	var damage: int = 0
+
+	print("Projectile hit: ", projectile_name)
+
+	match projectile_name:
+		"rock":
+			damage = 1
+
+		"sling":
+			damage = 5
+
+		"spear":
+			damage = 10
+
+		"axe":
+			damage = 15
+
+		"bow":
+			damage = 30
+
+		_:
+			push_warning("Unknown projectile: " + projectile_name)
+			return
+
+	hit_points -= damage
 	area.queue_free()
-	queue_free()
+
+	print(
+		name,
+		" took ",
+		damage,
+		" damage. HP remaining: ",
+		hit_points
+	)
+
+	if hit_points <= 0:
+		_caught = true
+		hitbox.set_deferred("monitoring", false)
+
+		animal_caught.emit(animal_data)
+		queue_free()
 
 func _initialize_movement() -> void:
 	_direction = _random_sign()

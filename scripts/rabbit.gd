@@ -11,7 +11,7 @@ signal animal_caught(animal_data: Resource)
 @export var hop_height: float = 30.0
 @export var pause_duration_min: float = 0.2
 @export var pause_duration_max: float = 0.8
-
+@export var hit_points: int = 1
 @onready var hitbox: Area2D = $hitbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visual: Node2D = $Visual
@@ -73,16 +73,48 @@ func _on_area_entered(area: Area2D) -> void:
 	if not area.is_in_group("Projectile"):
 		return
 
-	_caught = true
-	_is_hopping = false
+	var projectile_name := area.name.to_lower()
+	var damage: int = 0
 
-	hitbox.set_deferred("monitoring", false)
+	print("Projectile hit: ", projectile_name)
 
-	animal_caught.emit(animal_data)
+	match projectile_name:
+		"rock":
+			damage = 1
 
+		"sling":
+			damage = 5
+
+		"spear":
+			damage = 10
+
+		"axe":
+			damage = 15
+
+		"bow":
+			damage = 30
+
+		_:
+			push_warning("Unknown projectile: " + projectile_name)
+			return
+
+	hit_points -= damage
 	area.queue_free()
-	queue_free()
 
+	print(
+		name,
+		" took ",
+		damage,
+		" damage. HP remaining: ",
+		hit_points
+	)
+
+	if hit_points <= 0:
+		_caught = true
+		hitbox.set_deferred("monitoring", false)
+
+		animal_caught.emit(animal_data)
+		queue_free()
 
 func _is_inside_screen(point: Vector2) -> bool:
 	var screen_width := get_viewport_rect().size.x

@@ -61,12 +61,11 @@ func _enter_main_menu(_args = null) -> void:
 func _enter_hunting(_args = null) -> void:
 	_swap_screen(HUNTING_SCENE)
 
-func _enter_butchering(animals_caught: Array = []) -> void:
-
+func _enter_butchering(animals: Array = []) -> void:
 	_swap_screen(BUTCHERING_SCENE)
 
 	if _active_screen.has_method("setup"):
-		_active_screen.setup(animals_caught)
+		_active_screen.setup(animals)
 
 func _enter_shopping_center(_args = null) -> void:
 	_swap_screen(SHOPPING_CENTER_SCENE)

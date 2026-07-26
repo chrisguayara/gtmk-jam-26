@@ -79,9 +79,9 @@ func _initialize_equipped_weapon() -> void:
 		_print_equipped_weapon()
 
 
-func _change_weapon(direction: int) -> void:
+func _change_weapon(direction: int) -> bool:
 	if weapon_order.is_empty():
-		return
+		return false
 
 	for attempt in range(weapon_order.size()):
 		_weapon_index = wrapi(
@@ -95,10 +95,10 @@ func _change_weapon(direction: int) -> void:
 		if EquipmentManager.get_count(candidate) > 0:
 			equipped_weapon = candidate
 			_print_equipped_weapon()
-			return
+			return true
 
 	print("No weapons available")
-
+	return false
 
 func _print_equipped_weapon() -> void:
 	print(
@@ -169,12 +169,15 @@ func _end_round() -> void:
 		return
 
 	_round_active = false
+
+	round_timer.stop()
 	spawn_timer.stop()
 
 	Signals.hunt_round_complete.emit(
 		_animals_caught.duplicate()
 	)
 
+	get_tree().change_scene_to_file("res://Scenes/butchering.tscn")
 
 func _get_random_spawn_marker(use_sky_spawns: bool) -> Marker2D:
 	var valid_markers: Array[Marker2D] = []
@@ -269,12 +272,14 @@ func spawn_projectile(
 
 	if not EquipmentManager.consume_item(equipped_weapon):
 		print("No ", equipped_weapon, " remaining")
-		_change_weapon(1)
+
+		if not _change_weapon(1):
+			_end_round_from_ammo_depletion()
+
 		return
 
 	var projectile := projectile_scene.instantiate()
 	projectile_container.add_child(projectile)
-
 	projectile.global_position = spawn_position
 
 	if projectile.has_method("throw"):
@@ -289,5 +294,17 @@ func spawn_projectile(
 		projectile.queue_free()
 		return
 
+	# Automatically switch after firing the last one.
 	if EquipmentManager.get_count(equipped_weapon) <= 0:
-		_change_weapon(1)
+		if not _change_weapon(1):
+			_end_round_from_ammo_depletion()
+			
+			
+func _end_round_from_ammo_depletion() -> void:
+	if not _round_active:
+		return
+
+	print("All ammunition depleted")
+	Signals.hunt_resource_depleted.emit()
+
+	_end_round()
