@@ -47,14 +47,14 @@ func _enter_main_menu(_args = null) -> void:
 func _enter_hunting(_args = null) -> void:
 	_swap_screen(HUNTING_SCENE)
 	music_manager.play_track(&"hunting")
-func _enter_butchering(animals_caught: Array = []) -> void:
 
 func _enter_butchering(animals: Array = []) -> void:
 	_swap_screen(BUTCHERING_SCENE)
+
 	if _active_screen.has_method("setup"):
-		_active_screen.setup(animals_caught)
-	music_manager.play_track(&"shopping")
 		_active_screen.setup(animals)
+
+	music_manager.play_track(&"shopping")
 
 func _enter_shopping_center(_args = null) -> void:
 	_swap_screen(SHOPPING_CENTER_SCENE)
