@@ -9,8 +9,10 @@
 script = ExtResource("1_2xxjk")
 
 [node name="butchered_dodo" parent="." unique_id=1195703499 instance=ExtResource("2_ch0fw")]
+visible = false
 
 [node name="butchered_bunny" parent="." unique_id=1061132685 instance=ExtResource("2_725vr")]
+visible = false
 
 [node name="ButcheredAnimal" parent="." unique_id=762391112 instance=ExtResource("2_4jg7d")]
 visible = false
@@ -22,5 +24,6 @@ collision_mask = 0
 offset = Vector2(320, 350)
 zoom = Vector2(3, 3)
 
+[connection signal="done" from="butchered_dodo" to="." method="_on_butchered_dodo_done"]
 [connection signal="done" from="butchered_bunny" to="." method="_on_butchered_bunny_done"]
 [connection signal="done" from="ButcheredAnimal" to="." method="_on_butchered_animal_done"]
