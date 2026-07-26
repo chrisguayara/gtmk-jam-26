@@ -27,3 +27,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="SceneContainer" type="Node2D" parent="." unique_id=486427060]
+
+[node name="MusicManager" type="Node2D" parent="." unique_id=926636106]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=2127132067]
