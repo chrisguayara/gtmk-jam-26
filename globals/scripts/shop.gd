@@ -28,6 +28,8 @@ const ITEM_COSTS: Dictionary = {
 	&"axe": $axe_hover,
 	&"sling": $sling_hover,
 }
+@onready var confirm: AudioStreamPlayer = $confirm
+
 
 func _ready() -> void:
 	wallet_label.text = str(RunManager.wallet)
@@ -62,6 +64,7 @@ func _buy(item_id: StringName, cost: int) -> void:
 	RunManager.wallet -= cost
 	EquipmentManager.add_item(item_id)
 	Signals.item_purchased.emit(item_id, cost)
+	confirm.play()
 	print("You have purchased "+  item_id)
 
 func _on_wallet_changed(_old: int, new_amount: int) -> void:
