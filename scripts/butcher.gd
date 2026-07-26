@@ -40,6 +40,9 @@ func _ready() -> void:
 	if len(animals_to_butcher) == 0:
 		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
 		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
 	_cuts_remaining = cuts_available
 	Signals.butcher_started.emit()
 	print("butcher ready!")
@@ -58,6 +61,7 @@ func _ready() -> void:
 		await next_animal
 		move_animal_to(new_animal,1200)
 		print("move animal.")
+	
 	
 
 func make_cut() -> void:
