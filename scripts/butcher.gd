@@ -24,7 +24,7 @@ func _ready() -> void:
 	animal.set_textures(assets.slice(1))
 	
 	animal.position.x = -500
-	move_animal_to(640)
+	move_animal_to(320)
 	
 
 func make_cut() -> void:
