@@ -1,7 +1,48 @@
 [gd_scene format=3 uid="uid://0juc5gqgk6cr"]
 
-[ext_resource type="Texture2D" uid="uid://dftnfpgwtlc03" path="res://assets/placeholders/raven.png" id="1_mx8py"]
 [ext_resource type="Script" uid="uid://bviqa2xctkluf" path="res://scripts/raven.gd" id="1_qwmry"]
+[ext_resource type="Texture2D" uid="uid://clg7stanruvu1" path="res://assets/spritesheets/raven.png" id="2_qwmry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfxu0"]
+radius = 55.006317
+
+[sub_resource type="Animation" id="Animation_qiy2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_wrmly"]
+resource_name = "default"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4a75"]
+_data = {
+&"RESET": SubResource("Animation_qiy2e"),
+&"default": SubResource("Animation_wrmly")
+}
 
 [node name="raven" type="Node2D" unique_id=1373672552]
 scale = Vector2(0.8, 0.8)
@@ -11,11 +52,21 @@ speed_max = 320.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1964468191]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=222548368]
-polygon = PackedVector2Array(0, -109, 17, -105, 24, -94, 29, -91, 36, -89, 37, -86, 66, -91, 83, -90, 80, -81, 69, -69, 69, -58, 59, -45, 45, -40, 33, -41, 31, -18, 29, -14, 32, 5, 28, 10, 32, 25, 20, 16, 11, -1, -4, 0, -13, 7, -21, 8, -34, 25, -27, 1, -23, -13, -29, -24, -30, -39, -67, -40, -88, -50, -92, -67, -96, -90, -85, -94, -50, -83, -29, -75, -26, -93, -13, -106)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=762559444]
+position = Vector2(3.75, 16.25)
+scale = Vector2(1.4999999, 1.4999999)
+shape = SubResource("CircleShape2D_lfxu0")
 
 [node name="Visual" type="Node2D" parent="." unique_id=49900015]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" unique_id=1808202695]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_m4a75")
+autoplay = &"default"
+
 [node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=943835818]
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("1_mx8py")
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_qwmry")
+hframes = 3
+frame = 1

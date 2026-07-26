@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cjuymsf3xoi2d"]
 
-[ext_resource type="Texture2D" uid="uid://c0xl6pdtbltc" path="res://assets/placeholders/bigfoot.png" id="1_76jld"]
 [ext_resource type="Script" uid="uid://dcfvgl5t8nyjr" path="res://scripts/bigfoot.gd" id="1_fn2h4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_eycs7"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_lfxu0"]
 
 [node name="bigfoot" type="Node2D" unique_id=1407055935]
 script = ExtResource("1_fn2h4")
@@ -15,4 +18,7 @@ polygon = PackedVector2Array(-15, -126, -62, -77, -141, -6, -153, 88, -124, 99, 
 [node name="Visual" type="Node2D" parent="." unique_id=1819654016]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=72842542]
-texture = ExtResource("1_76jld")
+texture = SubResource("ImageTexture_eycs7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Visual" unique_id=430424683]
+texture = SubResource("ImageTexture_lfxu0")

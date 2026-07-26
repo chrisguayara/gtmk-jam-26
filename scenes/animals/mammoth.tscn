@@ -1,7 +1,49 @@
 [gd_scene format=3 uid="uid://bmxr3ns7j0d6s"]
 
 [ext_resource type="Script" uid="uid://dfs5wh2w5wit6" path="res://scripts/mammoth.gd" id="1_51ota"]
-[ext_resource type="Texture2D" uid="uid://dco1alkrgyqga" path="res://assets/placeholders/mammoth.png" id="1_ckswp"]
+[ext_resource type="Texture2D" uid="uid://drh5y3y4v40th" path="res://assets/spritesheets/mammoth.png" id="2_51ota"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51ota"]
+size = Vector2(319.28577, 163.57147)
+
+[sub_resource type="Animation" id="Animation_51ota"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_yi14b"]
+resource_name = "default"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xxv6"]
+_data = {
+&"RESET": SubResource("Animation_51ota"),
+&"default": SubResource("Animation_yi14b")
+}
 
 [node name="Mammoth" type="Node2D" unique_id=1464306291]
 scale = Vector2(1.4, 1.4)
@@ -9,11 +51,22 @@ script = ExtResource("1_51ota")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1838556063]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=2122437538]
-polygon = PackedVector2Array(-11, -109, 16, -146, 61, -155, 98, -135, 104, -90, 98, -57, 93, -29, 137, -18, 141, -69, 169, -71, 169, -32, 157, 63, 116, 98, 54, 74, 61, 128, -13, 137, -11, 74, -41, 80, -43, 133, -84, 142, -93, 132, -78, 83, -95, 74, -113, 75, -114, 109, -108, 132, -141, 138, -165, 130, -156, 37, -173, 22, -178, -62, -143, -106, -98, -120, -54, -115)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=445878660]
+position = Vector2(2.5000339, -8.9285755)
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_51ota")
 
 [node name="Visual" type="Node2D" parent="." unique_id=13847976]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" unique_id=422325595]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_7xxv6")
+autoplay = &"default"
+
 [node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1276928252]
+texture_filter = 1
+position = Vector2(50, 2.857143)
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("1_ckswp")
+texture = ExtResource("2_51ota")
+hframes = 3
+frame = 2

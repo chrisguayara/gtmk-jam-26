@@ -31,7 +31,6 @@ var _decision_time_remaining: float = 0.0
 
 
 func _ready() -> void:
-	# Prevents the same spawn-order issue the rabbit had.
 	call_deferred("_initialize_movement")
 
 
@@ -70,7 +69,6 @@ func _make_random_decision() -> void:
 		_direction *= -1.0
 		_update_facing()
 
-	# Sometimes start a short sprint.
 	if randf() < burst_chance:
 		_start_burst()
 
