@@ -13,7 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://4v1h47udh2sr" path="res://assets/backgrounds/weapons/sling.png" id="7_1v8qu"]
 [ext_resource type="Texture2D" uid="uid://dwy4n3v8dy12p" path="res://assets/sprites/weapon_sling.png" id="7_x0ymv"]
 [ext_resource type="AudioStream" uid="uid://b7r3rahahj4j4" path="res://assets/audio/shopper4.ogg" id="13_nknre"]
-[ext_resource type="AudioStream" uid="uid://8chf6662reus" path="res://assets/audio/shopper3.ogg" id="14_ab3pv"]
+[ext_resource type="AudioStream" uid="uid://d2xpiob7kdcc4" path="res://assets/audio/sfx/off.ogg" id="14_6e48q"]
+[ext_resource type="AudioStream" uid="uid://bwetlurri3ifp" path="res://assets/audio/sfx/button1.ogg" id="15_6e48q"]
 
 [sub_resource type="Animation" id="Animation_nknre"]
 length = 0.001
@@ -194,6 +195,9 @@ stream = ExtResource("13_nknre")
 autoplay = true
 
 [node name="confirm" type="AudioStreamPlayer" parent="." unique_id=4816655]
-stream = ExtResource("14_ab3pv")
+stream = ExtResource("14_6e48q")
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=306127027]
+stream = ExtResource("15_6e48q")
 
 [connection signal="pressed" from="leave" to="." method="_on_finished_pressed"]

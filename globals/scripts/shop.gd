@@ -29,6 +29,7 @@ const ITEM_COSTS: Dictionary = {
 	&"sling": $sling_hover,
 }
 @onready var confirm: AudioStreamPlayer = $confirm
+@onready var click: AudioStreamPlayer = $click
 
 
 func _ready() -> void:
@@ -49,6 +50,7 @@ func _on_item_hover(item_id: StringName) -> void:
 	price_label.text = "Free" if cost == 0 else str(cost)
 	price_label.global_position = _sprites[item_id].global_position + Vector2(0, -40)
 	price_label.visible = true
+	click.play()
 
 func _on_item_unhover(item_id: StringName) -> void:
 	_sprites[item_id].visible = false

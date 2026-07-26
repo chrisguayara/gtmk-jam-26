@@ -21,6 +21,8 @@ const ITEM_COSTS: Dictionary = {
 # Called when the node enters the scene tree for the first time.
 @onready var wallet_label: Label = $wallet
 @onready var price_label: Label = $PriceLabel
+@onready var confirm: AudioStreamPlayer = $confirm
+@onready var click: AudioStreamPlayer = $click
 
 func _ready() -> void:
 	wallet_label.text = str(RunManager.wallet)
@@ -40,6 +42,7 @@ func _on_item_hover(item_id: StringName) -> void:
 	price_label.text = "Free" if cost == 0 else str(cost)
 	price_label.global_position = _sprites[item_id].global_position + Vector2(0, -40)
 	price_label.visible = true
+	click.play()
 
 func _on_item_unhover(item_id: StringName) -> void:
 	_sprites[item_id].visible = false
@@ -55,6 +58,7 @@ func _buy(item_id: StringName, cost: int) -> void:
 	RunManager.wallet -= cost
 	EquipmentManager.add_item(item_id)
 	Signals.item_purchased.emit(item_id, cost)
+	confirm.play()
 	print("You have purchased "+  item_id)
 
 func _on_wallet_changed(_old: int, new_amount: int) -> void:
