@@ -1,8 +1,8 @@
 extends Node2D
 class_name Butcher
-@onready var animal = get_node("butchered_animal") #Change this to test. 
-@onready var rabbit = get_node("butchered_bunny")
-@onready var dodo = get_node("butchered_dodo")
+@onready var animal = preload("res://objects/butchered_animal.tscn") #Change this to test. 
+@onready var rabbit = preload("res://objects/butchered_bunny.tscn")
+@onready var dodo = preload("res://objects/butchered_dodo.tscn")
 #Look into butchered_bunny script for a guide on how to make a new butchered animal.
 #You should duplicate the scene. Then you want to extend a new script. Sloppy work I know.
 #Try linking the animals caught queue and make a dictionary between the caught animals and the butchered animals
@@ -14,19 +14,21 @@ class_name Butcher
 @export var cuts_available: int = 5
 var _cuts_remaining: int = 0
 @export var total_score: int = 0
+@onready var slash: AudioStreamPlayer = $slash
 
+@onready var slash_2: AudioStreamPlayer = $slash2
 
 
 var animals_to_butcher: Array[Resource] = []
 
-func get_animal(new_animal: Resource) -> Node:
+func get_animal(new_animal: Resource) -> Resource:
 	var animal_node = new_animal.instantiate()
 	if animal_node is Rabbit:
 		animal_node.queue_free()
 		return rabbit
 	if animal_node is Dodo:
 		animal_node.queue_free()
-		return rabbit
+		return dodo
 	else:
 		animal_node.queue_free()
 		return animal
@@ -48,13 +50,15 @@ func _ready() -> void:
 	for animal in animals_to_butcher:
 		var butcher = get_animal(animal)
 		
-		var new_animal = butcher.duplicate()
+		var new_animal = butcher.instantiate()
+		add_child(new_animal)
 		new_animal.position.x = -500
-		new_animal.position.y = 360
-		
-		
-
-		
+		new_animal.position.y = 0
+		new_animal.visible = true
+		new_animal.done.connect(_on_butchered_animal_done)
+		move_animal_to(new_animal,0)
+		await next_animal
+		move_animal_to(new_animal,1200)
 		print("move animal.")
 	
 
@@ -66,6 +70,7 @@ func make_cut() -> void:
 	if _cuts_remaining <= 0:
 		Signals.butcher_round_complete.emit()
 		
+	slash_2.play()
 
 
 
@@ -76,7 +81,9 @@ signal next_animal
 
 func _on_butchered_animal_done(score: int) -> void:
 	total_score += score
+	print("let's goo!")
 	next_animal.emit()
+	slash.play()
 	#broadcast signal here
 
 func move_animal_to(creature: Node, target_x: float) -> Tween:

@@ -5,6 +5,8 @@ class_name Hunt
 @export var round_duration: float = 60.0
 @export var max_animals_alive: int = 5
 @export var spawn_interval: float = 2.0
+@onready var sword: AudioStreamPlayer = $sword
+@onready var start: AudioStreamPlayer = $start
 
 @export var animal_scenes: Array[PackedScene]
 @export var weapon_scenes: Dictionary[StringName, PackedScene]
@@ -117,6 +119,7 @@ func _start_round() -> void:
 	spawn_timer.start()
 
 	Signals.hunt_started.emit()
+	
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -150,6 +153,7 @@ func _spawn_animal(animal_scene: PackedScene) -> void:
 
 	if animal.has_signal("animal_caught"):
 		animal.animal_caught.connect(_on_animal_caught)
+	start.play()
 
 
 func _on_animal_caught(animal_data: Resource) -> void:
@@ -248,6 +252,7 @@ func _on_hunter_projectile_thrown(
 		spawn_position,
 		throw_power
 	)
+	sword.play()
 
 
 func spawn_projectile(

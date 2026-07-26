@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crwn1emkvhbxb"
+path="res://.godot/imported/melee sound.wav-3bd6b838b28f9368ad681c841a0d682d.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/melee sound.wav"
+dest_files=["res://.godot/imported/melee sound.wav-3bd6b838b28f9368ad681c841a0d682d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
