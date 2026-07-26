@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dxj0i6yqtl2wv" path="res://scenes/animals/rabbit.tscn" id="5_mpivs"]
 [ext_resource type="PackedScene" uid="uid://0juc5gqgk6cr" path="res://scenes/animals/raven.tscn" id="6_ef04i"]
 [ext_resource type="Texture2D" uid="uid://drra6to0fnwkp" path="res://assets/backgrounds/finalbgs/hunting.png" id="7_38aby"]
-[ext_resource type="Texture2D" uid="uid://bouif6g32t4et" path="res://assets/backgrounds/finalbgs/hunting_boulder.png" id="8_mekbq"]
 [ext_resource type="PackedScene" uid="uid://cqmv41xqhoi13" path="res://scenes/weapons/spear.tscn" id="7_mekbq"]
 [ext_resource type="PackedScene" uid="uid://b74n5x2d247sk" path="res://scenes/weapons/axe.tscn" id="8_lc22l"]
+[ext_resource type="Texture2D" uid="uid://bouif6g32t4et" path="res://assets/backgrounds/finalbgs/hunting_boulder.png" id="8_mekbq"]
 [ext_resource type="PackedScene" uid="uid://dfpy1md6o521e" path="res://scenes/weapons/arrow.tscn" id="9_3m0v8"]
 [ext_resource type="PackedScene" uid="uid://cw4mjmyba6ci8" path="res://scenes/weapons/slingrock.tscn" id="10_nto76"]
 [ext_resource type="PackedScene" uid="uid://derd0fjhgyr4o" path="res://scenes/weapons/rock.tscn" id="11_bgum8"]
@@ -19,11 +19,11 @@
 script = ExtResource("1_2ohfr")
 animal_scenes = Array[PackedScene]([ExtResource("2_38aby"), ExtResource("3_mekbq"), ExtResource("4_pudgl"), ExtResource("5_mpivs"), ExtResource("6_ef04i")])
 weapon_scenes = Dictionary[StringName, PackedScene]({
-&"Axe": ExtResource("8_lc22l"),
-&"Bow": ExtResource("9_3m0v8"),
-&"Rock": ExtResource("11_bgum8"),
-&"Sling": ExtResource("10_nto76"),
-&"Spear": ExtResource("7_mekbq")
+&"axe": ExtResource("8_lc22l"),
+&"bow": ExtResource("9_3m0v8"),
+&"rock": ExtResource("11_bgum8"),
+&"sling": ExtResource("10_nto76"),
+&"spear": ExtResource("7_mekbq")
 })
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1569556811]
@@ -37,7 +37,6 @@ texture = ExtResource("8_mekbq")
 
 [node name="Hunter" parent="." unique_id=1464014446 instance=ExtResource("3_8xw4e")]
 z_index = 100
-position = Vector2(145, 610)
 position = Vector2(132, 530)
 
 [node name="SpawnArea" type="Node2D" parent="." unique_id=1254023725]

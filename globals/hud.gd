@@ -7,7 +7,7 @@ class_name HUD
 
 func _ready() -> void:
 	Signals.wallet_changed.connect(_on_wallet_changed)
-	Signals.hunt_beast_caught.connect(func(_beast): _set_context("Beast Caught"))
+	Signals.hunt_animal_caught.connect(func(_animal): _set_context("Animal Caught"))
 	Signals.hunt_resource_depleted.connect(func(): _set_context("Out of spears"))
 	Signals.butcher_cut_made.connect(func(cuts_remaining): _set_context("%d cuts left" % cuts_remaining))
 

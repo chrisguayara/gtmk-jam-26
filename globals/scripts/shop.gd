@@ -3,7 +3,7 @@ class_name WeaponShop
 
 
 const ITEM_COSTS: Dictionary = {
-	&"rocks": 0,
+	&"rock": 0,
 	&"spear": 20,
 	&"bow": 35,
 	&"axe": 25,
@@ -14,7 +14,7 @@ const ITEM_COSTS: Dictionary = {
 @onready var price_label: Label = $PriceLabel  
 
 @onready var _sprites: Dictionary = {
-	&"rocks": $rocks,
+	&"rock": $rocks,
 	&"spear": $spear,
 	&"bow": $bow,
 	&"axe": $axe,
@@ -22,7 +22,7 @@ const ITEM_COSTS: Dictionary = {
 }
 
 @onready var _hover_areas: Dictionary = {
-	&"rocks": $rock_hover,
+	&"rock": $rock_hover,
 	&"spear": $spear_hover,
 	&"bow": $bow_hover,
 	&"axe": $axe_hover,

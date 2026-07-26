@@ -13,7 +13,7 @@ class_name Hunt
 @export var animal_scenes: Array[PackedScene]
 @export var weapon_scenes: Dictionary[StringName, PackedScene]
 @onready var spawn_timer: Timer = $SpawnTimer
-@export var equipped_weapon: StringName = &"Spear"
+@export var equipped_weapon: StringName = &"rock"
 
 var _animals_caught: Array[Resource] = []
 var _round_active: bool = false
