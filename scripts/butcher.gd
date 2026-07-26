@@ -14,7 +14,9 @@ class_name Butcher
 @export var cuts_available: int = 5
 var _cuts_remaining: int = 0
 @export var total_score: int = 0
+@onready var slash: AudioStreamPlayer = $slash
 
+@onready var slash_2: AudioStreamPlayer = $slash2
 
 
 var animals_to_butcher: Array[Resource] = []
@@ -72,6 +74,7 @@ func make_cut() -> void:
 	if _cuts_remaining <= 0:
 		Signals.butcher_round_complete.emit()
 		
+	slash_2.play()
 
 
 
@@ -84,6 +87,7 @@ func _on_butchered_animal_done(score: int) -> void:
 	total_score += score
 	print("let's goo!")
 	next_animal.emit()
+	slash.play()
 	#broadcast signal here
 
 func move_animal_to(creature: Node, target_x: float) -> Tween:

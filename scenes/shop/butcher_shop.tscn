@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ed3yguo3f26" path="res://assets/sprites/weapon_knife_obsidian.png" id="5_6gvqo"]
 [ext_resource type="Texture2D" uid="uid://10wkgqvhmsup" path="res://assets/backgrounds/butcher/obsidian_knife.png" id="5_mfuuq"]
 [ext_resource type="AudioStream" uid="uid://ogeooffx8xlq" path="res://assets/audio/shopper2.ogg" id="9_0r6rc"]
+[ext_resource type="AudioStream" uid="uid://bwetlurri3ifp" path="res://assets/audio/sfx/button1.ogg" id="10_2mtou"]
+[ext_resource type="AudioStream" uid="uid://bly20moa31v6j" path="res://assets/audio/sfx/on.ogg" id="11_c1km4"]
 
 [node name="ButcherShop" type="Node2D" unique_id=118142257]
 script = ExtResource("1_kq21t")
@@ -97,5 +99,11 @@ text = "LEAVE SHOP"
 [node name="entry sound" type="AudioStreamPlayer" parent="." unique_id=1085075956]
 stream = ExtResource("9_0r6rc")
 autoplay = true
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=577942566]
+stream = ExtResource("10_2mtou")
+
+[node name="confirm" type="AudioStreamPlayer" parent="." unique_id=17890955]
+stream = ExtResource("11_c1km4")
 
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

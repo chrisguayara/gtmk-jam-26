@@ -5,7 +5,7 @@ class_name Dodo
 signal animal_caught(animal_data: Resource)
 
 @export var animal_data: Resource
-
+@export var hit_points: int = 30
 
 @export_group("Walking")
 @export var walk_speed: float = 30.0
@@ -69,14 +69,48 @@ func _on_area_entered(area: Area2D) -> void:
 	if not area.is_in_group("Projectile"):
 		return
 
-	_caught = true
-	hitbox.set_deferred("monitoring", false)
+	var projectile_name := area.name.to_lower()
+	var damage: int = 0
 
-	animal_caught.emit(animal_data)
+	print("Projectile hit: ", projectile_name)
 
+	match projectile_name:
+		"rock":
+			damage = 1
+
+		"sling":
+			damage = 5
+
+		"spear":
+			damage = 10
+
+		"axe":
+			damage = 15
+
+		"bow":
+			damage = 30
+
+		_:
+			push_warning("Unknown projectile: " + projectile_name)
+			return
+
+	hit_points -= damage
 	area.queue_free()
-	queue_free()
 
+	print(
+		name,
+		" took ",
+		damage,
+		" damage. HP remaining: ",
+		hit_points
+	)
+
+	if hit_points <= 0:
+		_caught = true
+		hitbox.set_deferred("monitoring", false)
+
+		animal_caught.emit(animal_data)
+		queue_free()
 
 func _initialize_movement() -> void:
 	_direction = _random_direction()

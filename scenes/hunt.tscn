@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dfpy1md6o521e" path="res://scenes/weapons/arrow.tscn" id="9_3m0v8"]
 [ext_resource type="PackedScene" uid="uid://cw4mjmyba6ci8" path="res://scenes/weapons/slingrock.tscn" id="10_nto76"]
 [ext_resource type="PackedScene" uid="uid://derd0fjhgyr4o" path="res://scenes/weapons/rock.tscn" id="11_bgum8"]
+[ext_resource type="AudioStream" uid="uid://bwetlurri3ifp" path="res://assets/audio/sfx/button1.ogg" id="15_ufxkq"]
+[ext_resource type="AudioStream" uid="uid://bly20moa31v6j" path="res://assets/audio/sfx/on.ogg" id="16_52j5k"]
+[ext_resource type="AudioStream" uid="uid://c3y8mmqk8r62u" path="res://assets/audio/sfx/animal melee sound.wav" id="17_qnwl0"]
+[ext_resource type="AudioStream" uid="uid://d2xpiob7kdcc4" path="res://assets/audio/sfx/off.ogg" id="18_52j5k"]
 
 [node name="hunt" type="Node2D" unique_id=1126931706]
 script = ExtResource("1_2ohfr")
@@ -84,3 +88,15 @@ one_shot = true
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=504683395]
 wait_time = 2.0
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=926071675]
+stream = ExtResource("15_ufxkq")
+
+[node name="confirm" type="AudioStreamPlayer" parent="." unique_id=1226039922]
+stream = ExtResource("16_52j5k")
+
+[node name="sword" type="AudioStreamPlayer" parent="." unique_id=771392990]
+stream = ExtResource("17_qnwl0")
+
+[node name="start" type="AudioStreamPlayer" parent="." unique_id=1998019989]
+stream = ExtResource("18_52j5k")

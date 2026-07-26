@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dg8771bouqyjo" path="res://objects/butchered_bunny.tscn" id="2_725vr"]
 [ext_resource type="PackedScene" uid="uid://o60l4lkmlqog" path="res://objects/butchered_dodo.tscn" id="2_ch0fw"]
 [ext_resource type="Texture2D" uid="uid://c76mma1biqdit" path="res://assets/backgrounds/finalbgs/butchering.png" id="2_oqk8g"]
+[ext_resource type="AudioStream" uid="uid://caifr4hrn3onp" path="res://assets/audio/sfx/steam hisses - Marker #1.wav" id="6_qt8nm"]
+[ext_resource type="AudioStream" uid="uid://cjwig3vrnikag" path="res://assets/audio/sfx/sword sound.wav" id="7_i8aup"]
 
 [node name="butcher" type="Node2D" unique_id=1063997430]
 script = ExtResource("1_2xxjk")
@@ -31,6 +33,12 @@ collision_mask = 0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=750311803]
 zoom = Vector2(2, 2)
+
+[node name="slash" type="AudioStreamPlayer" parent="." unique_id=1806143918]
+stream = ExtResource("6_qt8nm")
+
+[node name="slash2" type="AudioStreamPlayer" parent="." unique_id=1412712393]
+stream = ExtResource("7_i8aup")
 
 [connection signal="done" from="butchered_dodo" to="." method="_on_butchered_dodo_done"]
 [connection signal="done" from="butchered_bunny" to="." method="_on_butchered_bunny_done"]

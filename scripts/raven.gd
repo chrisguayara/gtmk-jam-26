@@ -12,12 +12,12 @@ signal animal_caught(animal_data: Resource)
 
 @export var vertical_direction_change_min: float = 0.4
 @export var vertical_direction_change_max: float = 1.0
-
+@export var hit_points: int = 5
 
 @export_group("Roaming Area")
 @export var vertical_roam_up: float = 100.0
 @export var vertical_roam_down: float = 80.0
-
+var _caught: bool = false
 
 @export_group("Screen Bounds")
 @export var horizontal_margin: float = 50.0
@@ -63,13 +63,54 @@ func _process(delta: float) -> void:
 	_handle_bounds()
 
 func _on_area_entered(area: Area2D) -> void:
+	if _caught:
+		return
+
 	if not area.is_in_group("Projectile"):
 		return
 
-	animal_caught.emit(animal_data)
+	var projectile_name := area.name.to_lower()
+	var damage: int = 0
 
+	print("Projectile hit: ", projectile_name)
+
+	match projectile_name:
+		"rock":
+			damage = 1
+
+		"sling":
+			damage = 5
+
+		"spear":
+			damage = 10
+
+		"axe":
+			damage = 15
+
+		"bow":
+			damage = 30
+
+		_:
+			push_warning("Unknown projectile: " + projectile_name)
+			return
+
+	hit_points -= damage
 	area.queue_free()
-	queue_free()
+
+	print(
+		name,
+		" took ",
+		damage,
+		" damage. HP remaining: ",
+		hit_points
+	)
+
+	if hit_points <= 0:
+		_caught = true
+		hitbox.set_deferred("monitoring", false)
+
+		animal_caught.emit(animal_data)
+		queue_free()
 
 func _initialize_movement() -> void:
 	# Save the Y coordinate of whichever sky marker
