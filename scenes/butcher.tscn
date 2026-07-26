@@ -15,8 +15,10 @@ offset_bottom = 40.0
 texture = ExtResource("2_oqk8g")
 
 [node name="butchered_dodo" parent="." unique_id=1195703499 instance=ExtResource("2_ch0fw")]
+visible = false
 
 [node name="butchered_bunny" parent="." unique_id=1061132685 instance=ExtResource("2_725vr")]
+visible = false
 
 [node name="ButcheredAnimal" parent="." unique_id=762391112 instance=ExtResource("2_4jg7d")]
 position = Vector2(602, 331)

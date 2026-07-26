@@ -1,8 +1,8 @@
 extends Node2D
 class_name Butcher
-var assets: Array = preload_folder("res://assets/placeholders/ButcherPartsGeneric")
-@onready var animal = get_node("butchered_dodo") #Change this to test. 
-
+@onready var animal = get_node("butchered_animal") #Change this to test. 
+@onready var rabbit = get_node("butchered_bunny")
+@onready var dodo = get_node("butchered_dodo")
 #Look into butchered_bunny script for a guide on how to make a new butchered animal.
 #You should duplicate the scene. Then you want to extend a new script. Sloppy work I know.
 #Try linking the animals caught queue and make a dictionary between the caught animals and the butchered animals
@@ -13,26 +13,49 @@ var assets: Array = preload_folder("res://assets/placeholders/ButcherPartsGeneri
 
 @export var cuts_available: int = 5
 var _cuts_remaining: int = 0
+@export var total_score: int = 0
+
+
 
 var animals_to_butcher: Array[Resource] = []
+
+func get_animal(new_animal: Resource) -> Node:
+	var animal_node = new_animal.instantiate()
+	if animal_node is Rabbit:
+		animal_node.queue_free()
+		return rabbit
+	if animal_node is Dodo:
+		animal_node.queue_free()
+		return rabbit
+	else:
+		animal_node.queue_free()
+		return animal
+		
 
 func setup(animals_caught: Array) -> void:
 	animals_to_butcher = animals_caught
 
 func _ready() -> void:
+	
+	if len(animals_to_butcher) == 0:
+		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
 	_cuts_remaining = cuts_available
 	Signals.butcher_started.emit()
 	print("butcher ready!")
-	
-	
-	
-	if animal.readied_lines == false:
-		await animal.lines_readied
+	#get_animal(load("res://scenes/animals/rabbit.tscn"))
 
-	
-	animal.position.x = -500
-	animal.position.y = 360
-	move_animal_to(320)
+	for animal in animals_to_butcher:
+		var butcher = get_animal(animal)
+		
+		var new_animal = butcher.duplicate()
+		new_animal.position.x = -500
+		new_animal.position.y = 360
+		
+		
+
+		
+		print("move animal.")
 	
 
 func make_cut() -> void:
@@ -44,43 +67,30 @@ func make_cut() -> void:
 		Signals.butcher_round_complete.emit()
 		
 
-func preload_folder(path: String) -> Array:
-	var files = []
-	var dir = DirAccess.open(path)
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.ends_with(".png"):
-			files.append(file_name)
-		file_name = dir.get_next()
-	dir.list_dir_end()
 
-	files.sort()  # alphabetical order
-
-	var result = []
-	for f in files:
-		result.append(load(path + "/" + f))
-	return result
 
 func _process(delta: float) -> void:
 	pass
-	
 
-func _on_butchered_animal_done() -> void:
-	var tween = move_animal_to(1500)
-	await tween.finished
-	Signals.butcher_round_complete.emit(animal.score)
+signal next_animal
+
+func _on_butchered_animal_done(score: int) -> void:
+	total_score += score
+	next_animal.emit()
 	#broadcast signal here
 
-func move_animal_to(target_x: float) -> Tween:
+func move_animal_to(creature: Node, target_x: float) -> Tween:
 	var tween = create_tween()
-	tween.tween_property(animal, "position:x", target_x, 1.0)\
+	tween.tween_property(creature, "position:x", target_x, 1.0)\
 	.set_trans(Tween.TRANS_SINE)\
 	.set_ease(Tween.EASE_OUT)
 	return tween
 
 
-func _on_butchered_bunny_done() -> void:
-	var tween = move_animal_to(1500)
-	await tween.finished
-	Signals.butcher_round_complete.emit(animal.score)
+func _on_butchered_bunny_done(score: int) -> void:
+	total_score += score
+	next_animal.emit()
+
+func _on_butchered_dodo_done(score: int) -> void:
+	total_score += score
+	next_animal.emit()

@@ -2,14 +2,15 @@ class_name butchered_animal
 extends StaticBody2D
 const cutting = preload("res://objects/cutting_line.tscn")
 
-var sprite_sheet: Resource
-var frame_width := 128
-var frame_height := 128
-var columns := 5
-var rows := 1
+var sprite_sheet: Resource = preload("res://assets/placeholders/ButcherPartsGeneric/sprite_sheet.png")
 
-@export var assets: Array 
-@export var score: int = 5000
+var columns := 6
+var rows := 1
+var frame_width := 210
+var frame_height := 149
+
+@export var assets: Array  
+@export var score: int = 3000
 var cutting_lines: Array
 var limbsCoordiates: Array = [
 	Vector2(100,30),Vector2(100,-30),
@@ -23,7 +24,7 @@ var limb_scale = .4
 @onready var label = get_node("Label")
 
 signal lines_readied
-signal done
+signal done(score:int)
 # Called when the node enters the scene tree for the first time.
 var cuts: int
 func _ready() -> void:
@@ -52,7 +53,8 @@ func _ready() -> void:
 				atlas.region = Rect2(col * frame_width, row * frame_height, frame_width, frame_height)
 				frames.append(atlas)
 		set_textures(frames.slice(1))
-	
+	else:
+		set_textures(assets.slice(1))
 
 func scoring(subtracted_score: int) -> void:
 	print(subtracted_score)

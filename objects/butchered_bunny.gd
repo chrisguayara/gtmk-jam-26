@@ -1,7 +1,11 @@
 extends butchered_animal
 
+	
 func _init() -> void:
-	sprite_sheet = preload("res://assets/sprites/butchered_animals/dodo.png") #Change this!
+	sprite_sheet = preload("res://assets/sprites/butchered_animals/bunny.png") #Change this!
+	frame_width = 128
+	frame_height = 128
+	columns = 5
 	limbsCoordiates = [ #THEY ARE LOCAL!
 	Vector2(-28,7),Vector2(-18,18),
 	Vector2(28,7),Vector2(8,18),
@@ -11,6 +15,8 @@ func _init() -> void:
 	#First sprite is always the body. You should set that manually. 
 	#Coordinates correspond to index location
 	limb_scale = .15  #Changes how big the cuts are. 
+	score = 2000
+	
 func _ready() -> void:
 	
 	# Offset lets you shift the position of a part
