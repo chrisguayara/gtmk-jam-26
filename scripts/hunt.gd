@@ -121,7 +121,6 @@ func _start_round() -> void:
 	Signals.hunt_started.emit()
 	
 
-
 func _on_spawn_timer_timeout() -> void:
 	if not _round_active:
 		return
@@ -181,7 +180,7 @@ func _end_round() -> void:
 		_animals_caught.duplicate()
 	)
 
-	get_tree().change_scene_to_file("res://Scenes/butchering.tscn")
+	GameManager.request_state(Main.BUTCHERING, _animals_caught.duplicate())
 
 func _get_random_spawn_marker(use_sky_spawns: bool) -> Marker2D:
 	var valid_markers: Array[Marker2D] = []
