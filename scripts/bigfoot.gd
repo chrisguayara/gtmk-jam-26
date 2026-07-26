@@ -53,11 +53,14 @@ func _on_area_entered(area: Area2D) -> void:
 		"sling":
 			damage = 5
 
+		"sling":
+			damage = 7
+
 		"spear":
-			damage = 10
+			damage = 12
 
 		"axe":
-			damage = 15
+			damage = 20
 
 		"bow":
 			damage = 30

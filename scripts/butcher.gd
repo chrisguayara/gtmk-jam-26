@@ -68,6 +68,48 @@ func get_animal(new_animal: Resource) -> Resource:
 	else:
 		animal_node.queue_free()
 		return animal
+		
+
+func setup(animals_caught: Array) -> void:
+	animals_to_butcher = animals_caught
+
+func _ready() -> void:
+	
+	#Insert array HERE
+	
+	#if len(animals_to_butcher) == 0:
+		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		#animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+	if len(animals_to_butcher) > 0:
+		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+
+	_cuts_remaining = cuts_available
+	Signals.butcher_started.emit()
+	print("butcher ready!")
+	#get_animal(load("res://scenes/animals/rabbit.tscn"))
+
+	for animal in animals_to_butcher: #MAIN LOOP
+		var butcher = get_animal(animal)
+		
+		var new_animal = butcher.instantiate()
+		add_child(new_animal)
+		new_animal.position.x = -500
+		new_animal.position.y = 0
+		new_animal.visible = true
+		new_animal.done.connect(_on_butchered_animal_done)
+		move_animal_to(new_animal,0)
+		await next_animal
+		move_animal_to(new_animal,1200)
+		print("move animal.")
+	print("total score is: " + str(total_score))
+	RunManager.wallet = RunManager.wallet + (total_score / 100)
+	Signals.butcher_round_complete.emit()
+
+	print(RunManager.wallet)
+	#End here
 
 
 func make_cut() -> void:

@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://be3xftjatebhx" path="res://scripts/hunter.gd" id="1_amnbx"]
 [ext_resource type="Texture2D" uid="uid://dy2cac2rnxv17" path="res://assets/placeholders/throw-Sheet.png" id="2_amnbx"]
 [ext_resource type="Texture2D" uid="uid://cn5privf0midj" path="res://assets/placeholders/arm.png" id="2_kr1wx"]
+[ext_resource type="Texture2D" uid="uid://bl26pjktc1jnr" path="res://assets/deoir_arm.png" id="4_aso1i"]
+[ext_resource type="Texture2D" uid="uid://bjqrvxr3ukc0" path="res://assets/deoir_back_armless.png" id="5_waq3h"]
 
 [node name="Hunter" type="Node2D" unique_id=1464014446]
 z_index = 1
 script = ExtResource("1_amnbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1732390465]
+visible = false
 z_index = 1
 texture_filter = 1
 position = Vector2(2, 1)
@@ -18,10 +21,23 @@ hframes = 2
 [node name="arm" type="Node2D" parent="." unique_id=421597622]
 position = Vector2(38, -58)
 
+[node name="DeoirArm" type="Sprite2D" parent="arm" unique_id=1105008003]
+position = Vector2(-0.9999962, -2)
+rotation = 0.81298316
+scale = Vector2(2.3873205, 2.3873205)
+texture = ExtResource("4_aso1i")
+offset = Vector2(20.19339, -25.320503)
+
 [node name="Sprite2D" type="Sprite2D" parent="arm" unique_id=542576902]
+visible = false
 position = Vector2(15, 6)
 rotation = 0.8150688
 texture = ExtResource("2_kr1wx")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="arm" unique_id=1947595309]
 position = Vector2(124, -5)
+
+[node name="DeoirBackArmless" type="Sprite2D" parent="." unique_id=29146549]
+position = Vector2(-12, -29)
+scale = Vector2(2.38, 2.38)
+texture = ExtResource("5_waq3h")
