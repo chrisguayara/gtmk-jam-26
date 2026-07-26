@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cupgmb6388vjs"]
 
 [ext_resource type="Script" uid="uid://c3an43acqv2na" path="res://globals/scripts/shop.gd" id="1_lx5au"]
-[ext_resource type="Texture2D" uid="uid://8bx3ahwjagwo" path="res://assets/backgrounds/weapons_shop.png" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://bb5tpfuflga2j" path="res://assets/backgrounds/finalbgs/weaponstore.png" id="2_x0ymv"]
 [ext_resource type="Texture2D" uid="uid://cwlp8g4fth2qj" path="res://assets/backgrounds/weapons/axe.png" id="3_ajxib"]
 [ext_resource type="Texture2D" uid="uid://ch7royqtfy7f6" path="res://assets/sprites/weapon_rock_bolus.png" id="3_iiq6r"]
 [ext_resource type="Texture2D" uid="uid://bad53aju2j3q7" path="res://assets/sprites/weapon_sphere.png" id="4_s8fjn"]
@@ -13,15 +13,58 @@
 [ext_resource type="Texture2D" uid="uid://4v1h47udh2sr" path="res://assets/backgrounds/weapons/sling.png" id="7_1v8qu"]
 [ext_resource type="Texture2D" uid="uid://dwy4n3v8dy12p" path="res://assets/sprites/weapon_sling.png" id="7_x0ymv"]
 
+[sub_resource type="Animation" id="Animation_nknre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ab3pv"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6e48q"]
+_data = {
+&"RESET": SubResource("Animation_nknre"),
+&"idle": SubResource("Animation_ab3pv")
+}
+
 [node name="weapon_shop" type="Node2D" unique_id=1839950798]
 script = ExtResource("1_lx5au")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1938930473]
-offset_left = -19.0
-offset_top = -37.0
-offset_right = 1311.0
-offset_bottom = 733.0
-texture = ExtResource("2_xfvoa")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119350683]
+root_node = NodePath("../bg")
+libraries/ = SubResource("AnimationLibrary_6e48q")
+autoplay = &"idle"
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1507179077]
+texture_filter = 1
+position = Vector2(640, 360)
+texture = ExtResource("2_x0ymv")
+hframes = 2
 
 [node name="axe_hover" type="Area2D" parent="." unique_id=1145279416]
 position = Vector2(590, 161)

@@ -1,10 +1,83 @@
 [gd_scene format=3 uid="uid://cjuymsf3xoi2d"]
 
 [ext_resource type="Script" uid="uid://dcfvgl5t8nyjr" path="res://scripts/bigfoot.gd" id="1_fn2h4"]
+[ext_resource type="Texture2D" uid="uid://14c65so6iec3" path="res://assets/spritesheets/bigfoot.png" id="2_fn2h4"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_eycs7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfxu0"]
+radius = 127.01575
 
-[sub_resource type="ImageTexture" id="ImageTexture_lfxu0"]
+[sub_resource type="Animation" id="Animation_fn2h4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bs7d6"]
+resource_name = "default"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ab0xy"]
+resource_name = "hurt"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_q0mpk"]
+resource_name = "idle"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5afj6"]
+_data = {
+&"RESET": SubResource("Animation_fn2h4"),
+&"default": SubResource("Animation_bs7d6"),
+&"hurt": SubResource("Animation_ab0xy"),
+&"idle": SubResource("Animation_q0mpk")
+}
 
 [node name="bigfoot" type="Node2D" unique_id=1407055935]
 script = ExtResource("1_fn2h4")
@@ -12,13 +85,19 @@ script = ExtResource("1_fn2h4")
 [node name="hitbox" type="Area2D" parent="." unique_id=1438184282]
 position = Vector2(21, -41)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hitbox" unique_id=1240005755]
-polygon = PackedVector2Array(-15, -126, -62, -77, -141, -6, -153, 88, -124, 99, -97, 91, -109, 143, -148, 189, -130, 207, -71, 206, -62, 189, -79, 180, -39, 123, -12, 140, -21, 189, -4, 204, 38, 211, 63, 205, 53, 186, 30, 177, 49, 125, 15, 69, 22, 21, 41, 56, 117, 81, 129, 65, 127, 49, 117, 37, 114, 26, 102, 26, 71, 7, 45, -67, 54, -75, 54, -104, 32, -132, 7, -139)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1779217851]
+position = Vector2(-25, 45)
+shape = SubResource("CircleShape2D_lfxu0")
 
 [node name="Visual" type="Node2D" parent="." unique_id=1819654016]
 
-[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=72842542]
-texture = SubResource("ImageTexture_eycs7")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual" unique_id=1772111395]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_5afj6")
+autoplay = &"default"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Visual" unique_id=430424683]
-texture = SubResource("ImageTexture_lfxu0")
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=430424683]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_fn2h4")
+hframes = 5

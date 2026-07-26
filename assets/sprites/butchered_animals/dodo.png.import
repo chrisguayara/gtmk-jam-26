@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de801fop4knt8"
-path="res://.godot/imported/bigfit_frontfacing.png-96e6e9ffcc74495e3d2220922f78b7a6.ctex"
+uid="uid://b88xm08sa62sa"
+path="res://.godot/imported/dodo.png-ae7b05ed7d78640b813873845d6e689f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/animals/bigfit_frontfacing.png"
-dest_files=["res://.godot/imported/bigfit_frontfacing.png-96e6e9ffcc74495e3d2220922f78b7a6.ctex"]
+source_file="res://assets/sprites/butchered_animals/dodo.png"
+dest_files=["res://.godot/imported/dodo.png-ae7b05ed7d78640b813873845d6e689f.ctex"]
 
 [params]
 

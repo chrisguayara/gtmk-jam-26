@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dg8771bouqyjo"]
+
+[ext_resource type="Script" uid="uid://p101br88qjd6" path="res://objects/butchered_bunny.gd" id="1_cyq1x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ksenh"]
+load_path = "res://.godot/imported/bunny.png-43b1ddb72ebd49624114b9825a1b16e0.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cllb"]
+size = Vector2(217, 148)
+
+[node name="butchered_animal" type="StaticBody2D" unique_id=1195703499]
+script = ExtResource("1_cyq1x")
+metadata/_custom_type_script = "uid://csa7vk5fsfiv5"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=679081176]
+texture = SubResource("CompressedTexture2D_ksenh")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1777328584]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6cllb")
+
+[node name="Label" type="Label" parent="." unique_id=541552034]
+offset_left = 61.0
+offset_top = -106.0
+offset_right = 101.0
+offset_bottom = -83.0
+metadata/_edit_use_anchors_ = true

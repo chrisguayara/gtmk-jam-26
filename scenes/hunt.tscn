@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bmiiaymff8npb"]
 
 [ext_resource type="Script" uid="uid://ciqgl7egv17q2" path="res://scripts/hunt.gd" id="1_2ohfr"]
-[ext_resource type="Texture2D" uid="uid://k0grurbsmrj3" path="res://assets/placeholders/Background1.png" id="2_13tjr"]
 [ext_resource type="PackedScene" uid="uid://cjuymsf3xoi2d" path="res://scenes/animals/bigfoot.tscn" id="2_38aby"]
 [ext_resource type="PackedScene" uid="uid://bmf2k3amuwms1" path="res://scenes/hunter.tscn" id="3_8xw4e"]
 [ext_resource type="PackedScene" uid="uid://8l8ju2u85gq2" path="res://scenes/animals/dodo.tscn" id="3_mekbq"]
 [ext_resource type="PackedScene" uid="uid://bmxr3ns7j0d6s" path="res://scenes/animals/mammoth.tscn" id="4_pudgl"]
 [ext_resource type="PackedScene" uid="uid://dxj0i6yqtl2wv" path="res://scenes/animals/rabbit.tscn" id="5_mpivs"]
 [ext_resource type="PackedScene" uid="uid://0juc5gqgk6cr" path="res://scenes/animals/raven.tscn" id="6_ef04i"]
+[ext_resource type="Texture2D" uid="uid://drra6to0fnwkp" path="res://assets/backgrounds/finalbgs/hunting.png" id="7_38aby"]
+[ext_resource type="Texture2D" uid="uid://bouif6g32t4et" path="res://assets/backgrounds/finalbgs/hunting_boulder.png" id="8_mekbq"]
 [ext_resource type="PackedScene" uid="uid://cqmv41xqhoi13" path="res://scenes/weapons/spear.tscn" id="7_mekbq"]
 [ext_resource type="PackedScene" uid="uid://b74n5x2d247sk" path="res://scenes/weapons/axe.tscn" id="8_lc22l"]
 [ext_resource type="PackedScene" uid="uid://dfpy1md6o521e" path="res://scenes/weapons/arrow.tscn" id="9_3m0v8"]
@@ -28,10 +29,15 @@ weapon_scenes = Dictionary[StringName, PackedScene]({
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1569556811]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_13tjr")
+texture = ExtResource("7_38aby")
+
+[node name="Boulder" type="Sprite2D" parent="." unique_id=10267489]
+position = Vector2(260, 587)
+texture = ExtResource("8_mekbq")
 
 [node name="Hunter" parent="." unique_id=1464014446 instance=ExtResource("3_8xw4e")]
 z_index = 100
+position = Vector2(145, 610)
 position = Vector2(132, 530)
 
 [node name="SpawnArea" type="Node2D" parent="." unique_id=1254023725]

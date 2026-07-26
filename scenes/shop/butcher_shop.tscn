@@ -1,20 +1,41 @@
 [gd_scene format=3 uid="uid://dkor3hbnc75y7"]
 
 [ext_resource type="Script" uid="uid://nbmcl6s1of5i" path="res://scripts/shops/butcher_shop.gd" id="1_kq21t"]
-[ext_resource type="Texture2D" uid="uid://ce44ossr2f207" path="res://assets/backgrounds/butcher_shop.png" id="2_sftrj"]
+[ext_resource type="Texture2D" uid="uid://batlg0xislfk7" path="res://assets/backgrounds/finalbgs/knife.png" id="2_mfuuq"]
 [ext_resource type="Texture2D" uid="uid://dh46hv5bkgbri" path="res://assets/backgrounds/butcher/stone_knife.png" id="3_5p1w5"]
+[ext_resource type="Texture2D" uid="uid://g22yoht8e7o0" path="res://assets/sprites/weapon_knife_stone_handle.png" id="3_6otnd"]
+[ext_resource type="Texture2D" uid="uid://dhcd3q7of7eun" path="res://assets/sprites/weapon_knife_stone.png" id="4_6gvqo"]
 [ext_resource type="Texture2D" uid="uid://umcwhux7fae4" path="res://assets/backgrounds/butcher/handle_knife.png" id="4_f8p3b"]
+[ext_resource type="Texture2D" uid="uid://c0ed3yguo3f26" path="res://assets/sprites/weapon_knife_obsidian.png" id="5_6gvqo"]
 [ext_resource type="Texture2D" uid="uid://10wkgqvhmsup" path="res://assets/backgrounds/butcher/obsidian_knife.png" id="5_mfuuq"]
 
 [node name="ButcherShop" type="Node2D" unique_id=118142257]
 script = ExtResource("1_kq21t")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=191169797]
-offset_left = -28.0
-offset_top = -11.0
-offset_right = 1302.0
-offset_bottom = 759.0
-texture = ExtResource("2_sftrj")
+[node name="bg" type="Sprite2D" parent="." unique_id=1997125600]
+position = Vector2(640, 360)
+texture = ExtResource("2_mfuuq")
+
+[node name="sprites" type="Node2D" parent="." unique_id=771849453]
+position = Vector2(640, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="sprites" unique_id=332218168]
+texture_filter = 1
+position = Vector2(-218, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6otnd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="sprites" unique_id=1289098194]
+position = Vector2(-42, -24)
+rotation = 0.6806784
+scale = Vector2(2, 2)
+texture = ExtResource("4_6gvqo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="sprites" unique_id=431558144]
+texture_filter = 1
+position = Vector2(170, -22)
+scale = Vector2(2, 2)
+texture = ExtResource("5_6gvqo")
 
 [node name="stone_knife" type="Sprite2D" parent="." unique_id=986043826]
 position = Vector2(414, 362)
@@ -31,22 +52,26 @@ texture = ExtResource("5_mfuuq")
 [node name="stone_hover" type="Area2D" parent="." unique_id=284093757]
 position = Vector2(-399, 39)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stone_hover" unique_id=54448304]
-position = Vector2(813, 323)
-polygon = PackedVector2Array(4.5, -68.7, -8.4, -74.5, -25.5, -74.5, -36.5, -27.3, -36.5, 47.699997, -12.4, 74.5, 21.5, 74.5, 36.5, 50.199997, 36.5, -14.599998, 4.5, -65)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="stone_hover" unique_id=174965972]
+position = Vector2(821, 329)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-25.5, -38.5, -25.5, -14.5, -3.3999996, 15.200001, -9.5, 24.900002, -9.5, 27.300003, -5.299999, 31.5, 0.5, 31.5, 5.8999996, 24.2, 15.099998, 38.5, 25.5, 38.5, 25.5, 25.099998, 18.7, 16, 19.3, 15.5, 24.099998, 15.5, 25.5, 9.700001, 25.5, 5.700001, 20.3, 0.5, 17.900002, 0.5, 10.900002, 5.5, -20.5, -37.2, -20.5, -38.5)
 
 [node name="handle_hover" type="Area2D" parent="." unique_id=1055621163]
 position = Vector2(-228, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="handle_hover" unique_id=609453425]
-position = Vector2(813, 323)
-polygon = PackedVector2Array(13, -85, -13, -85, -36, -32.3, -36, 21.699997, -22.4, 39, -21.6, 39, -18, 81.399994, -18, 85, 36, 85, 36, 49.699997, 32.800003, 29.199997, 36, 18.800003, 36, -40.6, 13, -83.3)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="handle_hover" unique_id=805984688]
+position = Vector2(826, 336)
+rotation = 0.6806784
+scale = Vector2(1.9999999, 1.9999999)
+polygon = PackedVector2Array(-31, -34, -31, -24.5, -27, -16.5, -27, -14.200001, -1.7000008, 14.099998, -2.3999996, 16, -3.2999992, 16, -4.3999996, 18.5, -2, 20.8, -2, 22.8, 1.2000008, 26, 4.4000015, 26, 6.200001, 21.2, 17.3, 34, 31, 34, 31, 22.2, 19.599998, 12.599998, 23, 10, 23, 6.299999, 15.200001, 5, 11.900002, 5, -15, -24.8, -15, -26, -25, -34)
 
 [node name="obsidian_hover" type="Area2D" parent="." unique_id=1949812786]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obsidian_hover" unique_id=346013985]
-position = Vector2(813, 323)
-polygon = PackedVector2Array(-52.8, -100.5, -73.5, -100.5, -82.5, -76.9, -82.5, -7.4000015, -76.5, 2.800003, -76.5, 5.699997, -22.8, 54.399994, -27.5, 65.5, -27.5, 71.7, 34, 100.5, 65.8, 100.5, 82.5, 85.399994, 82.5, 63.600006, 46.5, 30.399994, 43.5, 20.599998, 43.5, 16.699997, 18.400002, 9.800003, -39.5, -82.9, -39.5, -85.4)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obsidian_hover" unique_id=1906396705]
+position = Vector2(810, 338)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-28.5, -41.4, -30, -42, -35.5, -42, -35.5, -18.2, 3.7999992, 24.099998, 3.2999992, 25.300003, -4.5, 19, -4.5, 17.400002, -10.299999, 16, -18.3, 16, -22.5, 20.2, -22.5, 23.5, -4.799999, 29, -3.8999996, 29, 0.5, 40.4, 0.5, 42, 4.299999, 42, 12.400002, 32, 16.900002, 35, 18.3, 35, 21.5, 41.5, 35.5, 42, 35.5, 28.400002, 23.900002, 19.3, 31.5, 11.799999, 31.5, 8.799999, 24, 5, 22.599998, 5, 18.5, -1.7000008, 18.5, -9, 6.5, -9, 6.5, -1.2999992, 16.5, 12, -0.70000076, -5, -1.5, -5, -28.5, -38.7)
 
 [node name="PriceLabel" type="Label" parent="." unique_id=277678907]
 offset_left = 984.0

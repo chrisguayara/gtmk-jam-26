@@ -26,6 +26,7 @@ const SHOP_SCENES := {
 var _active_screen: Node = null
 
 func _ready() -> void:
+
 	game_state_machine.register_state(MAIN_MENU, _enter_main_menu, _exit_screen)
 	game_state_machine.register_state(HUNTING, _enter_hunting, _exit_screen)
 	game_state_machine.register_state(BUTCHERING, _enter_butchering, _exit_screen)
@@ -60,7 +61,8 @@ func _enter_main_menu(_args = null) -> void:
 func _enter_hunting(_args = null) -> void:
 	_swap_screen(HUNTING_SCENE)
 
-func _enter_butchering(animals_caught: Array) -> void:
+func _enter_butchering(animals_caught: Array = []) -> void:
+
 	_swap_screen(BUTCHERING_SCENE)
 
 	if _active_screen.has_method("setup"):
