@@ -21,6 +21,13 @@ hframes = 2
 [node name="arm" type="Node2D" parent="." unique_id=421597622]
 position = Vector2(38, -58)
 
+[node name="DeoirArm" type="Sprite2D" parent="arm" unique_id=1105008003]
+position = Vector2(-0.9999962, -2)
+rotation = 0.81298316
+scale = Vector2(2.3873205, 2.3873205)
+texture = ExtResource("4_aso1i")
+offset = Vector2(20.19339, -25.320503)
+
 [node name="Sprite2D" type="Sprite2D" parent="arm" unique_id=542576902]
 visible = false
 position = Vector2(15, 6)
@@ -29,13 +36,6 @@ texture = ExtResource("2_kr1wx")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="arm" unique_id=1947595309]
 position = Vector2(124, -5)
-
-[node name="DeoirArm" type="Sprite2D" parent="." unique_id=1105008003]
-position = Vector2(37, -60)
-rotation = 0.81298316
-scale = Vector2(2.3873205, 2.3873205)
-texture = ExtResource("4_aso1i")
-offset = Vector2(20.19339, -25.320503)
 
 [node name="DeoirBackArmless" type="Sprite2D" parent="." unique_id=29146549]
 position = Vector2(-12, -29)
