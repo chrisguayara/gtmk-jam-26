@@ -7,5 +7,5 @@ class_name MainMenu
 
 func _ready() -> void:
 	hunt_button.pressed.connect(func(): GameManager.request_state(Main.HUNTING))
-	butcher_button.pressed.connect(func(): GameManager.request_state(Main.BUTCHERING))
+	butcher_button.pressed.connect(func(): GameManager.request_state(Main.BUTCHERING,[]))
 	shop_button.pressed.connect(func(): GameManager.request_state(Main.SHOPPING_CENTER))

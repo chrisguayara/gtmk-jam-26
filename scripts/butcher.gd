@@ -1,7 +1,15 @@
 extends Node2D
 class_name Butcher
 var assets: Array = preload_folder("res://assets/placeholders/ButcherPartsGeneric")
-@onready var animal = get_node("ButcheredAnimal")
+@onready var animal = get_node("butchered_dodo") #Change this to test. 
+
+#Look into butchered_bunny script for a guide on how to make a new butchered animal.
+#You should duplicate the scene. Then you want to extend a new script. Sloppy work I know.
+#Try linking the animals caught queue and make a dictionary between the caught animals and the butchered animals
+
+# Oh yeah, when you make a new butchered animal, connect a new signal (the signal name is "done")
+
+#TODO Add a popping sound on cut. Should be simple.
 
 @export var cuts_available: int = 5
 var _cuts_remaining: int = 0
@@ -20,10 +28,10 @@ func _ready() -> void:
 	
 	if animal.readied_lines == false:
 		await animal.lines_readied
-	print("textures added")
-	animal.set_textures(assets.slice(1))
+
 	
 	animal.position.x = -500
+	animal.position.y = 360
 	move_animal_to(320)
 	
 
@@ -70,3 +78,9 @@ func move_animal_to(target_x: float) -> Tween:
 	.set_trans(Tween.TRANS_SINE)\
 	.set_ease(Tween.EASE_OUT)
 	return tween
+
+
+func _on_butchered_bunny_done() -> void:
+	var tween = move_animal_to(1500)
+	await tween.finished
+	Signals.butcher_round_complete.emit(animal.score)
