@@ -4,23 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://dyd1ovlhh2ei6" path="res://objects/butchered_animal.tscn" id="2_4jg7d"]
 [ext_resource type="PackedScene" uid="uid://dg8771bouqyjo" path="res://objects/butchered_bunny.tscn" id="2_725vr"]
 [ext_resource type="PackedScene" uid="uid://o60l4lkmlqog" path="res://objects/butchered_dodo.tscn" id="2_ch0fw"]
+[ext_resource type="Texture2D" uid="uid://c76mma1biqdit" path="res://assets/backgrounds/finalbgs/butchering.png" id="2_oqk8g"]
 
 [node name="butcher" type="Node2D" unique_id=1063997430]
 script = ExtResource("1_2xxjk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=551343195]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_oqk8g")
 
 [node name="butchered_dodo" parent="." unique_id=1195703499 instance=ExtResource("2_ch0fw")]
 
 [node name="butchered_bunny" parent="." unique_id=1061132685 instance=ExtResource("2_725vr")]
 
 [node name="ButcheredAnimal" parent="." unique_id=762391112 instance=ExtResource("2_4jg7d")]
-visible = false
 position = Vector2(602, 331)
 collision_layer = 0
 collision_mask = 0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=837425277]
-offset = Vector2(320, 350)
-zoom = Vector2(3, 3)
 
 [connection signal="done" from="butchered_bunny" to="." method="_on_butchered_bunny_done"]
 [connection signal="done" from="ButcheredAnimal" to="." method="_on_butchered_animal_done"]
