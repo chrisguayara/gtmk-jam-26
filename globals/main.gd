@@ -52,6 +52,8 @@ func _enter_butchering(animals: Array = []) -> void:
 	_swap_screen(BUTCHERING_SCENE)
 
 	if _active_screen.has_method("setup"):
+		_active_screen.setup(animals_caught)
+	music_manager.play_track(&"main_menu")
 		_active_screen.setup(animals)
 
 	music_manager.play_track(&"shopping")
