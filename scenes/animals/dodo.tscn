@@ -54,9 +54,9 @@ burst_duration_min = 0.8
 burst_duration_max = 1.2
 burst_chance = 0.7
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1959920295]
+[node name="hitbox" type="Area2D" parent="." unique_id=1959920295]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=182833167]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=182833167]
 position = Vector2(16, 56.000004)
 scale = Vector2(1.4999999, 1.4999999)
 shape = SubResource("CircleShape2D_tfulo")

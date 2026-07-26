@@ -8,22 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bmxr3ns7j0d6s" path="res://scenes/animals/mammoth.tscn" id="4_pudgl"]
 [ext_resource type="PackedScene" uid="uid://dxj0i6yqtl2wv" path="res://scenes/animals/rabbit.tscn" id="5_mpivs"]
 [ext_resource type="PackedScene" uid="uid://0juc5gqgk6cr" path="res://scenes/animals/raven.tscn" id="6_ef04i"]
-[ext_resource type="PackedScene" uid="uid://cqmv41xqhoi13" path="res://scenes/weapons/spear.tscn" id="7_mekbq"]
-[ext_resource type="PackedScene" uid="uid://b74n5x2d247sk" path="res://scenes/weapons/axe.tscn" id="8_lc22l"]
-[ext_resource type="PackedScene" uid="uid://dfpy1md6o521e" path="res://scenes/weapons/arrow.tscn" id="9_3m0v8"]
-[ext_resource type="PackedScene" uid="uid://cw4mjmyba6ci8" path="res://scenes/weapons/slingrock.tscn" id="10_nto76"]
-[ext_resource type="PackedScene" uid="uid://derd0fjhgyr4o" path="res://scenes/weapons/rock.tscn" id="11_bgum8"]
 
 [node name="hunt" type="Node2D" unique_id=1126931706]
 script = ExtResource("1_2ohfr")
+round_duration = null
+max_animals_alive = null
+spawn_interval = null
 animal_scenes = Array[PackedScene]([ExtResource("2_38aby"), ExtResource("3_mekbq"), ExtResource("4_pudgl"), ExtResource("5_mpivs"), ExtResource("6_ef04i")])
-weapon_scenes = Dictionary[StringName, PackedScene]({
-&"Axe": ExtResource("8_lc22l"),
-&"Bow": ExtResource("9_3m0v8"),
-&"Rock": ExtResource("11_bgum8"),
-&"Sling": ExtResource("10_nto76"),
-&"Spear": ExtResource("7_mekbq")
-})
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1569556811]
 offset_right = 40.0
@@ -79,3 +70,5 @@ one_shot = true
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=504683395]
 wait_time = 2.0
+
+[connection signal="spear_thrown" from="Hunter" to="." method="_on_hunter_spear_thrown"]

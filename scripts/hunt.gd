@@ -9,14 +9,22 @@ class_name Hunt
 @onready var animal_container: Node2D = $AnimalContainer
 @onready var projectile_container: Node2D = $ProjectileContainer
 @onready var spawn_area: Node2D = $SpawnArea
-@onready var hunter: Node2D = $Hunter
+@onready var hunter: Hunter = $Hunter
 @export var animal_scenes: Array[PackedScene]
+@export var weapon_scenes: Dictionary[StringName, PackedScene]
 @onready var spawn_timer: Timer = $SpawnTimer
+@export var equipped_weapon: StringName = &"Spear"
 
 var _animals_caught: Array[Resource] = []
 var _round_active: bool = false
 
 func _ready() -> void:
+	
+	if hunter.has_signal("projectile_thrown"):
+		hunter.projectile_thrown.connect(_on_hunter_projectile_thrown)
+	else:
+		push_warning("Hunter does not have a projectile_thrown signal")
+		
 	round_timer.wait_time = round_duration
 	round_timer.one_shot = true
 	round_timer.timeout.connect(_on_round_timer_timeout)
@@ -36,13 +44,6 @@ func _start_round() -> void:
 	spawn_timer.start()
 
 	Signals.hunt_started.emit()
-
-
-func throw_tool() -> void:
-	if not _round_active:
-		return
-
-	# Spawn projectile here.
 
 
 func _on_spawn_timer_timeout() -> void:
@@ -155,3 +156,54 @@ func _get_spawn_z_index(marker: Marker2D) -> int:
 		return 5
 
 	return 0
+
+func _on_hunter_projectile_thrown(
+	direction: Vector2,
+	spawn_position: Vector2,
+	throw_power: float
+) -> void:
+	spawn_projectile(
+		direction,
+		spawn_position,
+		throw_power
+	)
+
+func spawn_projectile(
+	direction: Vector2,
+	spawn_position: Vector2,
+	throw_power: float
+) -> void:
+	if not _round_active:
+		return
+
+	if direction.is_zero_approx():
+		return
+
+	var projectile_scene: PackedScene = weapon_scenes.get(equipped_weapon)
+
+	if projectile_scene == null:
+		push_warning(
+			"No projectile scene assigned for weapon: "
+			+ str(equipped_weapon)
+		)
+		return
+
+	if not EquipmentManager.consume_item(equipped_weapon):
+		print("No ", equipped_weapon, " remaining")
+		return
+
+	var projectile := projectile_scene.instantiate()
+	projectile_container.add_child(projectile)
+
+	projectile.global_position = spawn_position
+
+	if projectile.has_method("throw"):
+		projectile.throw(direction, throw_power)
+	else:
+		push_warning(
+			str(equipped_weapon)
+			+ "'s projectile scene has no throw method"
+		)
+
+		EquipmentManager.add_item(equipped_weapon)
+		projectile.queue_free()

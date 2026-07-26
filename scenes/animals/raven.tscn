@@ -50,9 +50,9 @@ script = ExtResource("1_qwmry")
 speed_min = 200.0
 speed_max = 320.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1964468191]
+[node name="hitbox" type="Area2D" parent="." unique_id=1964468191]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=762559444]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=762559444]
 position = Vector2(3.75, 16.25)
 scale = Vector2(1.4999999, 1.4999999)
 shape = SubResource("CircleShape2D_lfxu0")

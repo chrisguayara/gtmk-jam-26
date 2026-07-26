@@ -2,13 +2,18 @@ class_name Hunter
 extends Node2D
 
 @onready var arm: Node2D = $arm
+@onready var projectile_spawn: Marker2D = $arm/ProjectileSpawn
 
 @export var arm_rotation_strength: float = 0.35
 @export var max_arm_rotation_degrees: float = 35.0
+@export var minimum_drag_distance: float = 30.0
+@export var maximum_drag_distance: float = 300.0
 
 var is_dragging := false
 var drag_start := Vector2.ZERO
 var drag_current := Vector2.ZERO
+
+signal projectile_thrown(direction: Vector2, spawn_position: Vector2, throw_power: float)
 
 
 func _process(_delta: float) -> void:
@@ -39,10 +44,26 @@ func release_drag() -> void:
 	is_dragging = false
 
 	var drag_vector := drag_current - drag_start
-	var shoot_direction := -drag_vector.normalized()
+	var drag_distance := drag_vector.length()
 
-	# Shoot projectile here using shoot_direction.
-	print(shoot_direction)
+	if drag_distance < minimum_drag_distance:
+		return
+
+	var direction := -drag_vector.normalized()
+
+	var throw_power := inverse_lerp(
+		minimum_drag_distance,
+		maximum_drag_distance,
+		drag_distance
+	)
+
+	throw_power = clampf(throw_power, 0.0, 1.0)
+
+	projectile_thrown.emit(
+		direction,
+		projectile_spawn.global_position,
+		throw_power
+	)
 
 
 func update_arm_rotation() -> void:

@@ -2,6 +2,10 @@ extends Node2D
 class_name Raven
 
 
+signal animal_caught(animal_data: Resource)
+
+@export var animal_data: Resource
+
 @export_group("Movement")
 @export var speed_min: float = 100.0
 @export var speed_max: float = 220.0
@@ -20,7 +24,7 @@ class_name Raven
 
 
 @onready var sprite: Sprite2D = $Visual/Sprite2D
-
+@onready var hitbox: Area2D = $hitbox
 
 var _horizontal_direction: float = 1.0
 var _vertical_direction: float = 1.0
@@ -36,8 +40,7 @@ var _movement_initialized: bool = false
 
 
 func _ready() -> void:
-	# Hunt places the raven after add_child(),
-	# so wait until the next frame before recording spawn position.
+	hitbox.area_entered.connect(_on_area_entered)
 	call_deferred("_initialize_movement")
 
 
@@ -59,6 +62,14 @@ func _process(delta: float) -> void:
 
 	_handle_bounds()
 
+func _on_area_entered(area: Area2D) -> void:
+	if not area.is_in_group("Projectile"):
+		return
+
+	animal_caught.emit(animal_data)
+
+	area.queue_free()
+	queue_free()
 
 func _initialize_movement() -> void:
 	# Save the Y coordinate of whichever sky marker

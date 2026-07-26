@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://derd0fjhgyr4o"]
+
+[ext_resource type="Script" uid="uid://cl3idou6x7hwg" path="res://scripts/rock.gd" id="1_hauws"]
+[ext_resource type="Texture2D" uid="uid://ch7royqtfy7f6" path="res://assets/sprites/weapon_rock_bolus.png" id="1_ofkym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hauws"]
+radius = 15.033297
+
+[node name="rock" type="Area2D" unique_id=156762291 groups=["Projectile"]]
+script = ExtResource("1_hauws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=336149262]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_hauws")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320646123]
+texture = ExtResource("1_ofkym")
