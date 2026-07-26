@@ -56,7 +56,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 	match projectile_name:
 		"rock":
-			damage = 1
+			damage = 3
 
 		"sling":
 			damage = 5

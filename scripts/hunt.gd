@@ -168,6 +168,8 @@ func _on_round_timer_timeout() -> void:
 
 
 func _end_round() -> void:
+	print("Hunt caught:", _animals_caught.size())
+	print(_animals_caught)
 	if not _round_active:
 		return
 

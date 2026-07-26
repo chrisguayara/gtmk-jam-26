@@ -14,6 +14,10 @@ func register_state(state_name: StringName, on_enter: Callable = Callable(), on_
 	_exit_callbacks[state_name] = on_exit
 
 func change_states(new_state: StringName, args = null) -> void:
+	print("change_states:", new_state)
+	print("args:", args)
+	print("registered:", _enter_callbacks.keys())
+	print("has callback:", _enter_callbacks.has(new_state))
 	if current_state != &"" and _exit_callbacks.has(current_state):
 		var exit_cb: Callable = _exit_callbacks[current_state]
 		if exit_cb.is_valid():
