@@ -41,13 +41,14 @@ func _ready() -> void:
 	
 	#Insert array HERE
 	
-	#if len(animals_to_butcher) == 0:
-		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
-		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
-		#animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
-		#animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
-		#animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
-	if len(animals_to_butcher) > 0:
+	if len(animals_to_butcher) == 0:
+		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/rabbit.tscn"))
+		animals_to_butcher.append(load("res://scenes/animals/dodo.tscn"))
+	if len(animals_to_butcher) < 0:
 		animals_to_butcher.append(load("res://scenes/animals/mammoth.tscn"))
 
 	_cuts_remaining = cuts_available
